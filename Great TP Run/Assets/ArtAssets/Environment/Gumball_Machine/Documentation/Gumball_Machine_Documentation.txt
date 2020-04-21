@@ -1,0 +1,31 @@
+Gumball Machine Documentation
+---------------------------------
+
+Thank you for downloading my Gumball Machine model!  This is my first free item submission to the Unity Asset Store, and as such, your feedback is vastly appreciated.  If you have any issues, suggestions, or questions regarding this model, please do not hesitate to contact me at dustin_bogers@hotmail.com .
+
+The intent of this asset is to give you a sample of my work.  If you like what I've done, please consider checking out some of my other works on the Unity Asset Store.
+
+
+What is Included
+----------------
+
+This pack includes the gumball machine model, plus 2 'Level of Detail' models, which can be used if your game requires a lower polygon count.
+
+
+How To Use This Pack
+--------------------
+
+The prefabs included in this pack work like you would expect, as you can simply drag them into your scene and place them as you wish.  Most of the models are accompanied by LOD (Level of Detail) versions that have a lowered polycount for devs who have a polygon budget.  The higher the LOD number, the more simplified the model becomes.  Prefabs have been provided for each LOD model.  The approximate triangle count for each model is as follows:
+
+Model			| Original 	| LOD1 		| LOD2
+---------------------------------------------------------------
+Gumball Machine		| 112758	| 58181		| 4090		
+
+
+
+
+
+Conclusion
+-----------
+Once again, if you have any trouble or questions about this asset, do not hesitate to contact me at dustin_bogers@hotmail.com
+Have fun!
