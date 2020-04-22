@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 3018975732974785815}
   - component: {fileID: 2855372903682639960}
   - component: {fileID: 2316085111187813294}
-  - component: {fileID: 1323797072341412197}
   - component: {fileID: 6958598193729710784}
+  - component: {fileID: 1323797072341412197}
+  - component: {fileID: 4300521565727944788}
   - component: {fileID: 9006527936194015003}
   - component: {fileID: 1141993937210458897}
   m_Layer: 0
@@ -124,44 +125,6 @@ MonoBehaviour:
   UpdateFrequency: 0.1
   MyCore: {fileID: 0}
   GameObjectMessages: 
---- !u!114 &1323797072341412197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021289747315842555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f53eb7ecd875994589d163199642dc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDirty: 0
-  IsClient: 0
-  IsServer: 0
-  IsLocalPlayer: 0
-  Owner: 0
-  Type: 0
-  NetId: 0
-  MyCore: {fileID: 0}
-  MyId: {fileID: 2316085111187813294}
-  Pname: 
-  score: 0
-  color: 0
-  MyTextbox: {fileID: 8139724019925411876}
-  manager: {fileID: 0}
-  myRig: {fileID: 0}
-  cam: {fileID: 0}
-  ready: 0
-  end: 0
-  CanShoot: 1
-  shootcooldown: 5
-  shoottimer: 0
-  turnRate: 3.5
-  velRate: 4
-  lerpVal: 0.25
-  lerpMag: 0.5
-  AttackBox: {fileID: 0}
 --- !u!114 &6958598193729710784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +151,68 @@ MonoBehaviour:
   LastRotation: {x: 0, y: 0, z: 0}
   LastVelocity: {x: 0, y: 0, z: 0}
   LastAngularVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &1323797072341412197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021289747315842555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f53eb7ecd875994589d163199642dc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDirty: 0
+  IsClient: 0
+  IsServer: 0
+  IsLocalPlayer: 0
+  Owner: 0
+  Type: 0
+  NetId: 0
+  MyCore: {fileID: 0}
+  MyId: {fileID: 2316085111187813294}
+  Pname: 
+  score: 0
+  color: 0
+  health: 100
+  MyTextbox: {fileID: 8139724019925411876}
+  manager: {fileID: 0}
+  myRig: {fileID: 0}
+  cam: {fileID: 0}
+  ready: 0
+  end: 0
+  CanShoot: 1
+  shootcooldown: 5
+  shoottimer: 0
+  turnRate: 3.5
+  velRate: 4
+  lerpVal: 0.25
+  lerpMag: 0.5
+  AttackBox: {fileID: 0}
+  inventory: {fileID: 4300521565727944788}
+--- !u!114 &4300521565727944788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021289747315842555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 189da13d3a0e6234993e2a89d4b03124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDirty: 0
+  IsClient: 0
+  IsServer: 0
+  IsLocalPlayer: 0
+  Owner: 0
+  Type: 0
+  NetId: 0
+  MyCore: {fileID: 0}
+  MyId: {fileID: 0}
+  tpCarried: 0
 --- !u!114 &9006527936194015003
 MonoBehaviour:
   m_ObjectHideFlags: 0

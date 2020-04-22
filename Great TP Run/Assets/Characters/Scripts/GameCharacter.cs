@@ -10,6 +10,7 @@ public class GameCharacter : NetworkComponent
     public string Pname;
     public int score;
     public int color;
+    public float health = 100;
 
     public Text MyTextbox;
     public GameManagingScript manager;
@@ -31,6 +32,7 @@ public class GameCharacter : NetworkComponent
     public float lerpMag = .5f;
 
     public GameObject AttackBox;
+    public Inventory inventory;
 
     public IEnumerator DisableAttack()
     {
@@ -88,6 +90,11 @@ public class GameCharacter : NetworkComponent
         if (flag == "SCORE")
         {
             score = int.Parse(value);
+        }
+
+        if (flag == "CARRIED")
+        {
+            inventory.tpCarried = int.Parse(value);
         }
 
         if( flag == "SHOOT")
@@ -228,6 +235,16 @@ public class GameCharacter : NetworkComponent
         }
     }
 
+    //Server will increase the TP carried in the inventory to the value that's passed in and send an update to clients
+    public void SetTPCarried(int c)
+    {
+        if(IsServer)
+        {
+            inventory.tpCarried = c;
+            SendUpdate("CARRIED", inventory.tpCarried.ToString());
+        }
+    }
+
     public IEnumerator WaitForShoot()
     {
         yield return new WaitForSeconds(shootcooldown);
@@ -249,10 +266,22 @@ public class GameCharacter : NetworkComponent
                 this.gameObject.GetComponent<Rigidbody>().position = spawnObjects[Owner%4].transform.position;
                 SetScore(score - 1);
             }
+            //Change tag to toilet paper or something later on
             if(other.tag == "coin")
             {
-                SetScore(score + 1);
-                MyCore.NetDestroyObject(other.GetComponent<NetworkID>().NetId);
+                if(inventory.tpCarried < 2)
+                {
+                    SetTPCarried(inventory.tpCarried + 1);
+                    MyCore.NetDestroyObject(other.GetComponent<NetworkID>().NetId);
+                }
+            }
+            if(other.tag == "House")
+            {
+                if(inventory.tpCarried > 0)
+                {
+                    SetScore(score + inventory.tpCarried);
+                    SetTPCarried(inventory.tpCarried = 0);
+                }
             }
         }
 
