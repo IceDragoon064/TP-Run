@@ -26,6 +26,12 @@ public class GameCharacter : NetworkComponent
 
     public float turnRate = 3.5f;
     public float velRate = 4.0f;
+    private float normalSpeed = 4.0f;
+
+
+    //Status bool variables
+    public bool spedUp = false;
+    public bool isInfected = false;
 
     //Testing variables
     public float lerpVal = .25f;
@@ -245,6 +251,15 @@ public class GameCharacter : NetworkComponent
         }
     }
 
+    public void IncreaseSpeed()
+    {
+        if(IsServer)
+        {
+            velRate = 5.5f;
+            SendUpdate("SpeedUp", velRate.ToString());
+        }
+    }
+
     public IEnumerator WaitForShoot()
     {
         yield return new WaitForSeconds(shootcooldown);
@@ -252,37 +267,58 @@ public class GameCharacter : NetworkComponent
         SendUpdate("CS", true.ToString());
     }
 
+
+    
+
     //Collisions
 
     //Triggers
     private void OnTriggerEnter(Collider other)
     {
-        if(IsServer)
+        if (IsServer)
         {
-            if(other.tag == "enemy")
+            if (other.tag == "enemy")
             {
                 //send to start location.
                 GameObject[] spawnObjects = GameObject.FindGameObjectsWithTag("Respawn");
-                this.gameObject.GetComponent<Rigidbody>().position = spawnObjects[Owner%4].transform.position;
+                this.gameObject.GetComponent<Rigidbody>().position = spawnObjects[Owner % 4].transform.position;
                 SetScore(score - 1);
             }
             //Change tag to toilet paper or something later on
-            if(other.tag == "coin")
+            if (other.tag == "coin")
             {
-                if(inventory.tpCarried < 2)
+                if (inventory.tpCarried < 2)
                 {
                     SetTPCarried(inventory.tpCarried + 1);
                     MyCore.NetDestroyObject(other.GetComponent<NetworkID>().NetId);
                 }
             }
-            if(other.tag == "House")
+            if (other.tag == "House")
             {
-                if(inventory.tpCarried > 0)
+                if (inventory.tpCarried > 0)
                 {
                     SetScore(score + inventory.tpCarried);
                     SetTPCarried(inventory.tpCarried = 0);
                 }
             }
+
+            if (other.tag == "SpeedDrink")
+            {
+                if(spedUp == false)
+                {
+
+                }
+            }
+
+            if(other.tag == "Medicine")
+            {
+                if(isInfected == true)
+                {
+
+                }
+            }
+
+
         }
 
         if(IsClient)
