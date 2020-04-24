@@ -6,17 +6,22 @@ using UnityEngine.UI;
 
 public class GameCharacter : NetworkComponent
 {
-    //This script goes on the player character created.
+    //Player info
     public string Pname;
     public int score;
     public int color;
+    
+    //Player Stats
     public float health = 100;
+    public float healingRate = 10;
+    public float infectedDamageRate = 10;
 
     public Text MyTextbox;
     public GameManagingScript manager;
     public Rigidbody myRig;
     public Camera cam;
 
+    //Game state
     public bool ready = false;
     public bool end = false;
 
@@ -24,14 +29,23 @@ public class GameCharacter : NetworkComponent
     public float shootcooldown = .5f;
     public float shoottimer = 0;
 
+    //Healing timer
+    public float healingCD = 0.6f;
+    public float healingReset = 0.6f;
+
+    //Infected timer
+    public float infectedCD = 0.6f;
+    public float infectedReset = 0.6f;
+
+    //movement
     public float turnRate = 3.5f;
     public float velRate = 4.0f;
     private float normalSpeed = 4.0f;
 
-
     //Status bool variables
     public bool spedUp = false;
     public bool isInfected = false;
+    public bool healing = false;
 
     //Testing variables
     public float lerpVal = .25f;
@@ -49,7 +63,6 @@ public class GameCharacter : NetworkComponent
 
     public override void HandleMessage(string flag, string value)
     {
-        //can also set color the same way
         if(flag == "PNAME")
         {
             Pname = value;
@@ -93,6 +106,12 @@ public class GameCharacter : NetworkComponent
             }
         }
 
+        //Testing Infection debuff
+        if (flag == "SPEED")
+        {
+            velRate = float.Parse(value);
+        }
+
         if (flag == "SCORE")
         {
             score = int.Parse(value);
@@ -101,6 +120,21 @@ public class GameCharacter : NetworkComponent
         if (flag == "CARRIED")
         {
             inventory.tpCarried = int.Parse(value);
+        }
+
+        if (flag == "HEALTH")
+        {
+            health = float.Parse(value);
+        }
+
+        if (flag == "INFECTION")
+        {
+            isInfected = bool.Parse(value);
+        }
+
+        if (flag == "HEALING")
+        {
+            healing = bool.Parse(value);
         }
 
         if( flag == "SHOOT")
@@ -140,25 +174,8 @@ public class GameCharacter : NetworkComponent
     public override IEnumerator SlowUpdate()
     {
         //At this point I know everything is initialized and ready to go.
-        //Poll and get our data.
         manager = FindObjectOfType<GameManagingScript>();
         myRig = this.GetComponent<Rigidbody>();
-
-        if (IsServer)
-        {
-            /*
-            NetworkPlayerOption[] AllPlayers = GameObject.FindObjectsOfType<NetworkPlayerOption>();
-
-            for (int i = 0; i < AllPlayers.Length; i++)
-            {
-                //if the network player option owner is the same as this game character owner.
-                if (AllPlayers[i].Owner == Owner)   
-                {
-                    Pname = AllPlayers[i].Pname;
-                    SendUpdate("PNAME", Pname);
-                }
-            }*/
-        }
 
         if(IsLocalPlayer)
         {
@@ -172,6 +189,62 @@ public class GameCharacter : NetworkComponent
         {
             if(!end)
             {
+                if (IsServer)
+                {
+                    //Player dies and respawns at their home. Player loses TP carried. Cures Infection.
+                    if (health <= 0)
+                    {
+                        SetHealth(100);
+                        GameObject[] spawnObjects = GameObject.FindGameObjectsWithTag("Respawn");
+                        this.gameObject.GetComponent<Rigidbody>().position = spawnObjects[Owner % 4].transform.position;
+                        SetScore(score - 1);
+                        isInfected = false;
+                        SendUpdate("INFECTION", false.ToString());
+                        SetTPCarried(0);
+                    }
+
+                    //Could change the timers below to be coroutines that starts the moment you are infected/enter healing pad. Don't know if better or not.
+                    /*public IEnumerator StartInfection() 
+                     * 
+                     * {
+                     *    if(IsServer) 
+                     *    {
+                     *          SetSpeed(3.0f);
+                                while(isInfected) 
+                                {
+                                    SetHealth(health - infectedDamageRate);
+                                    yield return WaitForSeconds(infectedReset);
+                                }
+                          }
+                        }
+                     *
+                     */
+
+                    if (isInfected)
+                    {
+                        SetSpeed(3.0f);    
+                        infectedCD -= Time.deltaTime;
+                        if(infectedCD <= 0)
+                        {
+                            SetHealth(health - infectedDamageRate);
+                            infectedCD = infectedReset;
+                        }
+                    }
+
+                    if (healing)
+                    {
+                        if (health < 100)
+                        {
+                            healingCD -= Time.deltaTime;
+                            if (healingCD <= 0)
+                            {
+                                SetHealth(health + healingRate);
+                                healingCD = healingReset;
+                            }
+                        }
+                    }
+                }
+
                 if (IsLocalPlayer)
                 {
                     if (((cam.transform.position - transform.position) + new Vector3(0,12,0)).magnitude < 21)
@@ -211,7 +284,6 @@ public class GameCharacter : NetworkComponent
                         shoottimer -= MyCore.MasterTimer;
                     }
                 }
-
             }
 
             if(manager.GameEnded)
@@ -232,6 +304,7 @@ public class GameCharacter : NetworkComponent
         }
     }
 
+    //Sets score of player. Updates score for all clients to see.
     public void SetScore(int s)
     {
         if(IsServer)
@@ -241,13 +314,48 @@ public class GameCharacter : NetworkComponent
         }
     }
 
-    //Server will increase the TP carried in the inventory to the value that's passed in and send an update to clients
+    //Set TP carried of player character. Updates client TP carried.
     public void SetTPCarried(int c)
     {
         if(IsServer)
         {
             inventory.tpCarried = c;
             SendUpdate("CARRIED", inventory.tpCarried.ToString());
+        }
+    }
+
+    //Set health of player character. Updates client health.
+    public void SetHealth(float value)
+    {
+        if(IsServer)
+        {
+            health = value;
+            if(health > 100)
+            {
+                health = 100;
+            }
+            SendUpdate("HEALTH", health.ToString());
+        }
+    }
+
+    //Set health of player character. Updates client speed.
+    public void SetSpeed(float value)
+    {
+        if(IsServer)
+        {
+            velRate = value;
+            SendUpdate("SPEED", velRate.ToString());
+        }
+    }
+
+    public void CureInfection()
+    {
+        if(IsServer)
+        {
+            isInfected = false;
+            infectedCD = infectedReset;
+            SendUpdate("INFECTION", false.ToString());
+            SetSpeed(normalSpeed);
         }
     }
 
@@ -267,9 +375,6 @@ public class GameCharacter : NetworkComponent
         SendUpdate("CS", true.ToString());
     }
 
-
-    
-
     //Collisions
 
     //Triggers
@@ -277,15 +382,13 @@ public class GameCharacter : NetworkComponent
     {
         if (IsServer)
         {
-            if (other.tag == "enemy")
+            if (other.CompareTag("enemy"))
             {
-                //send to start location.
-                GameObject[] spawnObjects = GameObject.FindGameObjectsWithTag("Respawn");
-                this.gameObject.GetComponent<Rigidbody>().position = spawnObjects[Owner % 4].transform.position;
-                SetScore(score - 1);
+                SetHealth(0);
             }
+
             //Change tag to toilet paper or something later on
-            if (other.tag == "coin")
+            if (other.CompareTag("coin"))
             {
                 if (inventory.tpCarried < 2)
                 {
@@ -293,7 +396,8 @@ public class GameCharacter : NetworkComponent
                     MyCore.NetDestroyObject(other.GetComponent<NetworkID>().NetId);
                 }
             }
-            if (other.tag == "House")
+
+            if (other.CompareTag("House"))
             {
                 if (inventory.tpCarried > 0)
                 {
@@ -303,7 +407,18 @@ public class GameCharacter : NetworkComponent
                 }
             }
 
-            if (other.tag == "SpeedDrink")
+            if (other.CompareTag("HealingPad"))
+            {
+                healing = true;
+                SendUpdate("HEALING", true.ToString());
+
+                if (isInfected)
+                {
+                    CureInfection();
+                }
+            }
+
+            if (other.CompareTag("SpeedDrink"))
             {
                 if(spedUp == false)
                 {
@@ -311,7 +426,7 @@ public class GameCharacter : NetworkComponent
                 }
             }
 
-            if(other.tag == "Medicine")
+            if(other.CompareTag("Medicine"))
             {
                 if(isInfected == true)
                 {
@@ -324,13 +439,25 @@ public class GameCharacter : NetworkComponent
 
         if(IsClient)
         {
-            if(other.tag == "Finish")
+            if(other.CompareTag("Finish"))
             {
                 //play sound effect
             }
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if(IsServer)
+        {
+            if(other.CompareTag("HealingPad"))
+            {
+                healing = false;
+                healingCD = healingReset;
+                SendUpdate("HEALING", false.ToString());
+            }
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

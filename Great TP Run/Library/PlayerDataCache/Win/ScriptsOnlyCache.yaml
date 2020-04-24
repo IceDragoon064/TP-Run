@@ -588,7 +588,7 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
-      Hash: db691d891635154c2cfe9e3c1fa5989c
+      Hash: adfb2b0a3f916926858e8d6c4d8c7fd3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameCharacter

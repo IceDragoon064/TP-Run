@@ -8,6 +8,7 @@ TagManager:
   - enemy
   - manager
   - House
+  - HealingPad
   layers:
   - Default
   - TransparentFX
