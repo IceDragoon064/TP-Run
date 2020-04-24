@@ -14,6 +14,8 @@ public class GameManagingScript : NetworkComponent
     public Text playerScoreText;
     public Text apText;
     public Text winnerText;
+    public int turnedIn = 0;
+    public int maxTurnIn = 2;
 
     public override void HandleMessage(string flag, string value)
     {
@@ -31,6 +33,11 @@ public class GameManagingScript : NetworkComponent
         {
             GameEnded = true;
             EndScreenSetup();
+        }
+        if (flag == "TURNIN")
+        {
+            turnedIn += int.Parse(value);
+            Debug.Log("Received value: " + value);
         }
     }
 
@@ -73,14 +80,21 @@ public class GameManagingScript : NetworkComponent
 
             while (!GameEnded)
             {
+
                 GameEnded = true;
 
+                if(turnedIn < maxTurnIn)
+                {
+                    GameEnded = false;
+                }
+
+                /*
                 GameObject[] coins = GameObject.FindGameObjectsWithTag("coin");
 
                 if (coins.Length > 0)
                 {
                     GameEnded = false;
-                }
+                }*/
 
                 yield return new WaitForSeconds(MyCore.MasterTimer);
             }
@@ -92,9 +106,16 @@ public class GameManagingScript : NetworkComponent
 
     }
 
+    public void playerTurnedIn(int value)
+    {
+        turnedIn += value;
+        SendUpdate("TURNIN", value.ToString());
+    }
+
     public void EndScreenSetup()
     {
         int maxScore = 0;
+        bool tie = false;
         string winnerName = "Default Text";
         endCanvas.enabled = true;
         GameCharacter[] players = FindObjectsOfType<GameCharacter>();
@@ -108,7 +129,21 @@ public class GameManagingScript : NetworkComponent
             apText.text += player.Pname + "\n";
             playerScoreText.text += player.score + "\n";
         }
-        winnerText.text = winnerName + " Wins!";
+        foreach (GameCharacter player in players)
+        {
+            if(player.score == maxScore && winnerName != player.Pname)
+            {
+                tie = true;
+            }
+        }
+        if(tie)
+        {
+            winnerText.text = "It's a draw!";
+        }
+        else
+        {
+            winnerText.text = winnerName + " Wins!";
+        }
     }
 
     void Start()

@@ -298,7 +298,8 @@ public class GameCharacter : NetworkComponent
                 if (inventory.tpCarried > 0)
                 {
                     SetScore(score + inventory.tpCarried);
-                    SetTPCarried(inventory.tpCarried = 0);
+                    manager.playerTurnedIn(inventory.tpCarried);
+                    SetTPCarried(0);
                 }
             }
 

@@ -12,10 +12,16 @@ public class ScoreAndUI : NetworkComponent
     public Text localScoreText;
     public Text playerScoreText;
     public Text pnameText;
+    public Text tpRemainingText;
+    public Text tpCarried;
+
+    public Slider hpBar;
+
     public Canvas apCanvas;
 
     public GameCharacter[] players;
     public GameCharacter myChar;
+    public GameManagingScript manager;
 
     public override void HandleMessage(string flag, string value)
     {
@@ -37,6 +43,7 @@ public class ScoreAndUI : NetworkComponent
             if (IsLocalPlayer)
             {
                 apCanvas.enabled = true;
+                manager = myChar.manager;
             }
 
             while (true)
@@ -48,6 +55,9 @@ public class ScoreAndUI : NetworkComponent
                     localScoreText.text = myChar.score.ToString();
                     pnameText.text = Pname;
                     players = FindObjectsOfType<GameCharacter>();
+                    tpRemainingText.text = "TP Left" + "\n" + (manager.maxTurnIn - manager.turnedIn).ToString();
+                    tpCarried.text = "TP Carried: " + myChar.inventory.tpCarried.ToString();
+                    hpBar.value = myChar.health;
                     foreach (GameCharacter player in players)
                     {
                         apText.text += player.Pname + "\n";

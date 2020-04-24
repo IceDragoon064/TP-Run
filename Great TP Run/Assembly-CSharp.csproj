@@ -63,6 +63,7 @@
      <Compile Include="Assets\Characters\Scripts\NameLookAtCamera.cs" />
      <Compile Include="Assets\Characters\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Characters\Scripts\ScoreAndUI.cs" />
+     <Compile Include="Assets\Fonts\Script\scriptTexttest.cs" />
      <Compile Include="Assets\GameManager\Scripts\GameManagingScript.cs" />
      <Compile Include="Assets\NetworkEngine\GameManagerTemplate.cs" />
      <Compile Include="Assets\NetworkEngine\NetworkComponent\NetworkComponent.cs" />
@@ -78,34 +79,36 @@
      <Compile Include="Assets\Scripts\UI_Controller.cs" />
      <None Include="Assets\ArtAssets\Environment\Urban_Props\readme.txt" />
      <None Include="Assets\ArtAssets\PickUps\BMA&apos;s Supplement Pack\Thanks.txt" />
+     <None Include="Assets\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
      <None Include="Assets\ArtAssets\Environment\Gumball_Machine\Documentation\Gumball_Machine_Documentation.txt" />
      <None Include="Assets\ArtAssets\Environment\Nobiax Free Gaz Tank\Nobiax Free Gaz Tank.txt" />
+     <None Include="Assets\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>D:/Github/TP-Run/Great TP Run/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>C:/Users/andre/Desktop/School/Game Design and Development/Unity Projects/TP-Run/Great TP Run/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>D:/Github/TP-Run/Great TP Run/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>C:/Users/andre/Desktop/School/Game Design and Development/Unity Projects/TP-Run/Great TP Run/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>D:/Github/TP-Run/Great TP Run/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/andre/Desktop/School/Game Design and Development/Unity Projects/TP-Run/Great TP Run/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Github/TP-Run/Great TP Run/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/andre/Desktop/School/Game Design and Development/Unity Projects/TP-Run/Great TP Run/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>D:/Github/TP-Run/Great TP Run/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>C:/Users/andre/Desktop/School/Game Design and Development/Unity Projects/TP-Run/Great TP Run/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>D:/Github/TP-Run/Great TP Run/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>C:/Users/andre/Desktop/School/Game Design and Development/Unity Projects/TP-Run/Great TP Run/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>D:/Github/TP-Run/Great TP Run/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>C:/Users/andre/Desktop/School/Game Design and Development/Unity Projects/TP-Run/Great TP Run/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>D:/Github/TP-Run/Great TP Run/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/andre/Desktop/School/Game Design and Development/Unity Projects/TP-Run/Great TP Run/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>D:/Github/TP-Run/Great TP Run/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/andre/Desktop/School/Game Design and Development/Unity Projects/TP-Run/Great TP Run/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
