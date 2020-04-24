@@ -293,6 +293,17 @@ public class GameCharacter : NetworkComponent
                     MyCore.NetDestroyObject(other.GetComponent<NetworkID>().NetId);
                 }
             }
+
+            //Toilet Paper  
+            if (other.tag == "TP")
+            {
+                if (inventory.tpCarried < 2)
+                {
+                    SetTPCarried(inventory.tpCarried + 1);
+                    MyCore.NetDestroyObject(other.GetComponent<NetworkID>().NetId);
+                }
+            }
+
             if (other.tag == "House")
             {
                 if (inventory.tpCarried > 0)

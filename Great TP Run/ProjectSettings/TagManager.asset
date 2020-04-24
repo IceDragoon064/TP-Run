@@ -8,6 +8,8 @@ TagManager:
   - enemy
   - manager
   - House
+  - TP
+  - SpeedDrink
   layers:
   - Default
   - TransparentFX
