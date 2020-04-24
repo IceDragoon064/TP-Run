@@ -57,6 +57,10 @@ public class ScoreAndUI : NetworkComponent
                     players = FindObjectsOfType<GameCharacter>();
                     tpRemainingText.text = "TP Left" + "\n" + (manager.maxTurnIn - manager.turnedIn).ToString();
                     tpCarried.text = "TP Carried: " + myChar.inventory.tpCarried.ToString();
+                    if (myChar.inventory.tpCarried >= 2)
+                    {
+                        tpCarried.text += " (max)";
+                    }
                     hpBar.value = myChar.health;
                     foreach (GameCharacter player in players)
                     {

@@ -339,7 +339,7 @@ MonoBehaviour:
   apText: {fileID: 5270126365566640396}
   winnerText: {fileID: 908004453}
   turnedIn: 0
-  maxTurnIn: 2
+  maxTurnIn: 3
 --- !u!1001 &8506991566174405157
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,10 +15,14 @@ public class GameManagingScript : NetworkComponent
     public Text apText;
     public Text winnerText;
     public int turnedIn = 0;
-    public int maxTurnIn = 2;
+
+    //Total TP that needs to be turned in before the game ends.
+    //To change this value go into the GameManager prefab and change it there.
+    public int maxTurnIn = 3;
 
     public override void HandleMessage(string flag, string value)
     {
+
         playerList = FindObjectsOfType<NetworkPlayerOption>();
 
         //Removing player options UI.
