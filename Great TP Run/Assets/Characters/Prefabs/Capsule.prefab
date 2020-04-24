@@ -39,6 +39,7 @@ Transform:
   - {fileID: 1022871315660735788}
   - {fileID: 7479446064758888635}
   - {fileID: 5706452861763056148}
+  - {fileID: 6544468124833511110}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -176,6 +177,8 @@ MonoBehaviour:
   score: 0
   color: 0
   health: 100
+  healingRate: 10
+  infectedDamageRate: 10
   MyTextbox: {fileID: 8139724019925411876}
   manager: {fileID: 0}
   myRig: {fileID: 0}
@@ -185,10 +188,15 @@ MonoBehaviour:
   CanShoot: 1
   shootcooldown: 5
   shoottimer: 0
+  healingCD: 0.6
+  healingReset: 0.6
+  infectedCD: 0.6
+  infectedReset: 0.6
   turnRate: 3.5
   velRate: 4
   spedUp: 0
   isInfected: 0
+  healing: 0
   lerpVal: 0.25
   lerpMag: 0.5
   AttackBox: {fileID: 0}
@@ -705,3 +713,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &7460462249145745911
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5187295423634494319}
+    m_Modifications:
+    - target: {fileID: 4420984482083518257, guid: db7f283b73e366e49b9120aba1875058,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420984482083518257, guid: db7f283b73e366e49b9120aba1875058,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420984482083518257, guid: db7f283b73e366e49b9120aba1875058,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420984482083518257, guid: db7f283b73e366e49b9120aba1875058,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420984482083518257, guid: db7f283b73e366e49b9120aba1875058,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420984482083518257, guid: db7f283b73e366e49b9120aba1875058,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420984482083518257, guid: db7f283b73e366e49b9120aba1875058,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1.0000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420984482083518257, guid: db7f283b73e366e49b9120aba1875058,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420984482083518257, guid: db7f283b73e366e49b9120aba1875058,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420984482083518257, guid: db7f283b73e366e49b9120aba1875058,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420984482083518257, guid: db7f283b73e366e49b9120aba1875058,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988547725914605010, guid: db7f283b73e366e49b9120aba1875058,
+        type: 3}
+      propertyPath: m_Name
+      value: InfectionRadius
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db7f283b73e366e49b9120aba1875058, type: 3}
+--- !u!4 &6544468124833511110 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4420984482083518257, guid: db7f283b73e366e49b9120aba1875058,
+    type: 3}
+  m_PrefabInstance: {fileID: 7460462249145745911}
+  m_PrefabAsset: {fileID: 0}

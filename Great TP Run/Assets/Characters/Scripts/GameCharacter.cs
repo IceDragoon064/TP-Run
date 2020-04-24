@@ -198,8 +198,7 @@ public class GameCharacter : NetworkComponent
                         GameObject[] spawnObjects = GameObject.FindGameObjectsWithTag("Respawn");
                         this.gameObject.GetComponent<Rigidbody>().position = spawnObjects[Owner % 4].transform.position;
                         SetScore(score - 1);
-                        isInfected = false;
-                        SendUpdate("INFECTION", false.ToString());
+                        CureInfection();
                         SetTPCarried(0);
                     }
 
@@ -348,6 +347,17 @@ public class GameCharacter : NetworkComponent
         }
     }
 
+    public void Infect()
+    {
+        if(IsServer)
+        {
+            isInfected = true;
+            infectedCD = infectedReset;
+            SendUpdate("INFECTION", true.ToString());
+            SetSpeed(velRate - 1.0f);
+        }
+    }
+
     public void CureInfection()
     {
         if(IsServer)
@@ -416,6 +426,31 @@ public class GameCharacter : NetworkComponent
                 {
                     CureInfection();
                 }
+            }
+
+            if (other.CompareTag("radius"))
+            {
+                //Making sure the player isn't already infected and that the radius hit is not your own.
+                GameObject colObj = other.transform.parent.gameObject;
+                if(!isInfected && colObj != this.transform.gameObject)
+                {
+                    Debug.Log("TOO CLOSE, YOU'RE INFECTED NOW");
+
+                    //See if they are an enemy or player
+                    if(colObj.CompareTag("enemy"))
+                    {
+                        Debug.Log("Enemy infected you"); 
+                        Infect();
+                    }
+                    if(colObj.CompareTag("Player"))
+                    {
+                        if(colObj.GetComponent<GameCharacter>().isInfected)
+                        {
+                            Debug.Log("Player infected you");
+                            Infect();
+                        }
+                    }
+                }   
             }
 
             if (other.CompareTag("SpeedDrink"))
