@@ -15,6 +15,8 @@ public class ScoreAndUI : NetworkComponent
     public Text tpRemainingText;
     public Text tpCarried;
 
+    public GameObject InfectedPanel;
+
     public Slider hpBar;
 
     public Canvas apCanvas;
@@ -35,6 +37,7 @@ public class ScoreAndUI : NetworkComponent
         {
             //UI stuff is happening locally to each player, score is the only synchronized value that the server sends.
             apCanvas.enabled = false;
+            
             if (IsClient)
             {
                 Pname = myChar.Pname;
@@ -43,6 +46,7 @@ public class ScoreAndUI : NetworkComponent
             if (IsLocalPlayer)
             {
                 apCanvas.enabled = true;
+                InfectedPanel.SetActive(false);
                 manager = myChar.manager;
             }
 
@@ -60,7 +64,7 @@ public class ScoreAndUI : NetworkComponent
                     if (myChar.inventory.tpCarried >= 2)
                     {
                         tpCarried.text += " (max)";
-                    }
+                    } 
                     hpBar.value = myChar.health;
                     foreach (GameCharacter player in players)
                     {
@@ -72,7 +76,6 @@ public class ScoreAndUI : NetworkComponent
                 yield return new WaitForSeconds(MyCore.MasterTimer);
             }
         }
-        
     }
 
     // Start is called before the first frame update

@@ -11,6 +11,7 @@ ScriptsOnlyBuild:
     - NameLookAtCamera
     - NetworkPlayerOption
     - NetworkRigidbody
+    - PlayerMovement
     - ScoreAndUI
     - UI_Controller
     Unity.Rider.Editor.dll:
@@ -68,59 +69,61 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11152}
+      Script: {instanceID: 11168}
     - Class: 114
-      Script: {instanceID: 11286}
+      Script: {instanceID: 11302}
     - Class: 114
-      Script: {instanceID: 11314}
+      Script: {instanceID: 11330}
     - Class: 114
-      Script: {instanceID: 11316}
+      Script: {instanceID: 11332}
     - Class: 114
-      Script: {instanceID: 11346}
+      Script: {instanceID: 11362}
     - Class: 114
-      Script: {instanceID: 11356}
+      Script: {instanceID: 11372}
     - Class: 114
-      Script: {instanceID: 11564}
+      Script: {instanceID: 11580}
     - Class: 114
-      Script: {instanceID: 11652}
+      Script: {instanceID: 11668}
     - Class: 114
-      Script: {instanceID: 11740}
+      Script: {instanceID: 11756}
     - Class: 114
-      Script: {instanceID: 11758}
+      Script: {instanceID: 11774}
     - Class: 114
-      Script: {instanceID: 11816}
+      Script: {instanceID: 11832}
     - Class: 114
-      Script: {instanceID: 11934}
+      Script: {instanceID: 11950}
     - Class: 114
-      Script: {instanceID: 12124}
+      Script: {instanceID: 12140}
     - Class: 114
-      Script: {instanceID: 12226}
+      Script: {instanceID: 12242}
     - Class: 114
-      Script: {instanceID: 12314}
+      Script: {instanceID: 12330}
     - Class: 114
-      Script: {instanceID: 12342}
+      Script: {instanceID: 12358}
     - Class: 114
-      Script: {instanceID: 12606}
+      Script: {instanceID: 12622}
     - Class: 114
-      Script: {instanceID: 12700}
+      Script: {instanceID: 12716}
     - Class: 114
-      Script: {instanceID: 12744}
+      Script: {instanceID: 12760}
     - Class: 114
-      Script: {instanceID: 12762}
+      Script: {instanceID: 12778}
     - Class: 114
-      Script: {instanceID: 12836}
+      Script: {instanceID: 12816}
     - Class: 114
-      Script: {instanceID: 12880}
+      Script: {instanceID: 12852}
     - Class: 114
-      Script: {instanceID: 12938}
+      Script: {instanceID: 12896}
     - Class: 114
-      Script: {instanceID: 12958}
+      Script: {instanceID: 12954}
     - Class: 114
-      Script: {instanceID: 12970}
+      Script: {instanceID: 12974}
     - Class: 114
-      Script: {instanceID: 12984}
+      Script: {instanceID: 12986}
     - Class: 114
       Script: {instanceID: 13000}
+    - Class: 114
+      Script: {instanceID: 13016}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -132,6 +135,8 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 205
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -552,13 +557,13 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: 98be959ace4b7ab10bdeb118532215ac
+      Hash: 7240523cba1396d2639c7a7482b3db12
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ScoreAndUI
   - hash:
       serializedVersion: 2
-      Hash: 45095e2ebed796267f83e55bd43bca1b
+      Hash: 95582c65ba57e06ca51c30d438287a6a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -588,7 +593,7 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
-      Hash: adfb2b0a3f916926858e8d6c4d8c7fd3
+      Hash: 0b364409e78a9404ba9ac523fd710035
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameCharacter
@@ -682,6 +687,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SpinTP
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

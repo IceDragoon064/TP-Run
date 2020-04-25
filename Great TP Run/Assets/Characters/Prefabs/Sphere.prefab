@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6630010602142035103}
   - component: {fileID: 3750990630397925539}
   - component: {fileID: 2331111920093546037}
+  - component: {fileID: 9187925410073746443}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Player
@@ -188,9 +189,9 @@ MonoBehaviour:
   shootcooldown: 5
   shoottimer: 0
   healingCD: 0.6
-  healingReset: 0.6
+  healingReset: 1
   infectedCD: 0.6
-  infectedReset: 0.6
+  infectedReset: 2
   turnRate: 3.5
   velRate: 4
   spedUp: 0
@@ -199,6 +200,7 @@ MonoBehaviour:
   lerpVal: 0.25
   lerpMag: 0.5
   AttackBox: {fileID: 0}
+  Overlay: {fileID: 3750990630397925539}
   inventory: {fileID: 0}
 --- !u!114 &6630010602142035103
 MonoBehaviour:
@@ -250,6 +252,7 @@ MonoBehaviour:
   pnameText: {fileID: 1573311429748797119}
   tpRemainingText: {fileID: 7254799069262396257}
   tpCarried: {fileID: 959961178002927490}
+  InfectedPanel: {fileID: 1230602907356469221}
   hpBar: {fileID: 2635515735052093431}
   apCanvas: {fileID: 3974839297281566475}
   players: []
@@ -271,6 +274,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &9187925410073746443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085602409497157253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4725640e20878104f975d4a42bacc913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDirty: 0
+  IsClient: 0
+  IsServer: 0
+  IsLocalPlayer: 0
+  Owner: 0
+  Type: 0
+  NetId: 0
+  MyCore: {fileID: 0}
+  MyId: {fileID: 0}
+  myRig: {fileID: 0}
+  myChar: {fileID: 0}
 --- !u!1 &5690477466714032741
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,6 +601,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1230602907356469221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 483427931230865582, guid: 5fa79de08a8e83b4f8d660ff2b5ae773,
+    type: 3}
+  m_PrefabInstance: {fileID: 1704192408525152075}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3719153567605723309
 PrefabInstance:
   m_ObjectHideFlags: 0

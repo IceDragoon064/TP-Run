@@ -10,6 +10,7 @@ TagManager:
   - House
   - HealingPad
   - radius
+  - TP
   layers:
   - Default
   - TransparentFX

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4300521565727944788}
   - component: {fileID: 9006527936194015003}
   - component: {fileID: 1141993937210458897}
+  - component: {fileID: 9127406417976576350}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -189,9 +190,9 @@ MonoBehaviour:
   shootcooldown: 5
   shoottimer: 0
   healingCD: 0.6
-  healingReset: 0.6
+  healingReset: 1
   infectedCD: 0.6
-  infectedReset: 0.6
+  infectedReset: 2
   turnRate: 3.5
   velRate: 4
   spedUp: 0
@@ -200,6 +201,7 @@ MonoBehaviour:
   lerpVal: 0.25
   lerpMag: 0.5
   AttackBox: {fileID: 0}
+  Overlay: {fileID: 9006527936194015003}
   inventory: {fileID: 4300521565727944788}
 --- !u!114 &4300521565727944788
 MonoBehaviour:
@@ -251,6 +253,7 @@ MonoBehaviour:
   pnameText: {fileID: 7464631369773745262}
   tpRemainingText: {fileID: 1651710102536655280}
   tpCarried: {fileID: 9155892106347185491}
+  InfectedPanel: {fileID: 7156727875363454260}
   hpBar: {fileID: 6255798255374609702}
   apCanvas: {fileID: 5002166091177004506}
   players: []
@@ -272,6 +275,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &9127406417976576350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021289747315842555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4725640e20878104f975d4a42bacc913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDirty: 0
+  IsClient: 0
+  IsServer: 0
+  IsLocalPlayer: 0
+  Owner: 0
+  Type: 0
+  NetId: 0
+  MyCore: {fileID: 0}
+  MyId: {fileID: 0}
+  myRig: {fileID: 0}
+  myChar: {fileID: 0}
 --- !u!1 &4440735182956723829
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,6 +521,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5187295423634494319}
     m_Modifications:
+    - target: {fileID: 483427931230865582, guid: 5fa79de08a8e83b4f8d660ff2b5ae773,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5737829294654612923, guid: 5fa79de08a8e83b4f8d660ff2b5ae773,
         type: 3}
       propertyPath: m_Name
@@ -713,6 +744,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7156727875363454260 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 483427931230865582, guid: 5fa79de08a8e83b4f8d660ff2b5ae773,
+    type: 3}
+  m_PrefabInstance: {fileID: 7342192518045906330}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7460462249145745911
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,13 +6,13 @@ using NETWORK_ENGINE;
 public class PlayerMovement : NetworkComponent
 {
     public Rigidbody myRig;
-    public SimpleSynchronization mySync;
+    public GameCharacter myChar;
     public override void HandleMessage(string flag, string value)
     {
         char[] remove = { '(', ')' };
-        if (flag == "VEL")
+        if (flag == "VELO")
         {
-            if(IsServer)
+            if (IsServer)
             {
                 string[] data = value.Trim(remove).Split(',');
                 Vector3 vel = new Vector3(
@@ -24,9 +24,9 @@ public class PlayerMovement : NetworkComponent
             }
         }
 
-        if(flag == "ROT")
+        if (flag == "ROTATES")
         {
-            if(IsServer)
+            if (IsServer)
             {
                 string[] data = value.Trim(remove).Split(',');
                 Vector3 rot = new Vector3(
@@ -42,39 +42,25 @@ public class PlayerMovement : NetworkComponent
     public override IEnumerator SlowUpdate()
     {
         myRig = this.GetComponent<Rigidbody>();
-
-        if (IsClient)
-        {
-            GameObject[] playerIDs = GameObject.FindGameObjectsWithTag("manager");
-            foreach (GameObject player in playerIDs)
-            {
-                mySync = player.GetComponent<SimpleSynchronization>();
-                if (mySync.IsLocalPlayer && mySync.NetId == this.Owner)
-                {
-                    Debug.Log("Owner NetID: " + mySync.NetId + ", thing Owner: " + this.Owner);
-                    break;
-                }
-            }
-        }
+        myChar = this.GetComponent<GameCharacter>();
 
         while (true)
         {
             if(this.IsLocalPlayer)
             {
-                if(Input.GetAxisRaw("Vertical") > 0.08 || Input.GetAxisRaw("Vertical") < -0.08)
+                if (Input.GetAxisRaw("Vertical") > 0.08 || Input.GetAxisRaw("Vertical") < -0.08)
                 {
                     float forward = Input.GetAxisRaw("Vertical");
                     Vector3 vel = new Vector3(0, myRig.velocity.y, 0) +
-                        this.transform.forward * forward * 4.0f;
-                    Debug.Log("Sending vert info");
-                    SendCommand("VEL", vel.ToString());
+                        this.transform.forward * forward * myChar.velRate;
+                    SendCommand("VELO", vel.ToString());
                 }
-                if(Input.GetAxisRaw("Horizontal") > 0.08 || Input.GetAxisRaw("Horizontal") < -0.08)
+                if (Input.GetAxisRaw("Horizontal") > 0.08 || Input.GetAxisRaw("Horizontal") < -0.08)
                 {
-                    float Turn = Input.GetAxisRaw("Horizontal");
-                    Vector3 rot = new Vector3(0, Turn * 2f, 0);
+                    float turn = Input.GetAxisRaw("Horizontal");
+                    Vector3 rotates = new Vector3(0, turn * myChar.turnRate, 0);
 
-                    SendCommand("ROT", rot.ToString());
+                    SendCommand("ROTATES", rotates.ToString());
                 }
             }
 

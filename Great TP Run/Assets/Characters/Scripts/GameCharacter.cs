@@ -30,12 +30,12 @@ public class GameCharacter : NetworkComponent
     public float shoottimer = 0;
 
     //Healing timer
-    public float healingCD = 0.6f;
-    public float healingReset = 0.6f;
+    public float healingCD = 1f;
+    public float healingReset = 1f;
 
     //Infected timer
     public float infectedCD = 0.6f;
-    public float infectedReset = 0.6f;
+    public float infectedReset = 2f;
 
     //movement
     public float turnRate = 3.5f;
@@ -52,6 +52,7 @@ public class GameCharacter : NetworkComponent
     public float lerpMag = .5f;
 
     public GameObject AttackBox;
+    public ScoreAndUI Overlay;
     public Inventory inventory;
 
     public IEnumerator DisableAttack()
@@ -75,36 +76,8 @@ public class GameCharacter : NetworkComponent
             color = int.Parse(value);
             this.GetComponent<MeshRenderer>().material = manager.materialList[color];
         }
-
+        
         char[] remove = { '(', ')' };
-        if (flag == "VELO")
-        {
-            if (IsServer)
-            {
-                string[] data = value.Trim(remove).Split(',');
-                Vector3 vel = new Vector3(
-                                                     float.Parse(data[0]),
-                                                     float.Parse(data[1]),
-                                                     float.Parse(data[2])
-                                                     );
-                myRig.velocity = vel;
-            }
-        }
-
-        //Don't name the flag the same as the network rigid body
-        if (flag == "ROTATES")
-        {
-            if (IsServer)
-            {
-                string[] data = value.Trim(remove).Split(',');
-                Vector3 rot = new Vector3(
-                                                     float.Parse(data[0]),
-                                                     float.Parse(data[1]),
-                                                     float.Parse(data[2])
-                                                     );
-                myRig.angularVelocity = rot;
-            }
-        }
 
         //Testing Infection debuff
         if (flag == "SPEED")
@@ -130,6 +103,19 @@ public class GameCharacter : NetworkComponent
         if (flag == "INFECTION")
         {
             isInfected = bool.Parse(value);
+            
+            //Activates the InfectedPanel on local players if true, otherwise it disactivates it.
+            if(IsLocalPlayer)
+            {
+                if(bool.Parse(value))
+                {
+                    Overlay.InfectedPanel.SetActive(true);
+                }
+                else
+                {
+                    Overlay.InfectedPanel.SetActive(false);
+                }
+            }
         }
 
         if (flag == "HEALING")
@@ -201,47 +187,6 @@ public class GameCharacter : NetworkComponent
                         CureInfection();
                         SetTPCarried(0);
                     }
-
-                    //Could change the timers below to be coroutines that starts the moment you are infected/enter healing pad. Don't know if better or not.
-                    /*public IEnumerator StartInfection() 
-                     * 
-                     * {
-                     *    if(IsServer) 
-                     *    {
-                     *          SetSpeed(3.0f);
-                                while(isInfected) 
-                                {
-                                    SetHealth(health - infectedDamageRate);
-                                    yield return WaitForSeconds(infectedReset);
-                                }
-                          }
-                        }
-                     *
-                     */
-
-                    if (isInfected)
-                    {
-                        SetSpeed(3.0f);    
-                        infectedCD -= Time.deltaTime;
-                        if(infectedCD <= 0)
-                        {
-                            SetHealth(health - infectedDamageRate);
-                            infectedCD = infectedReset;
-                        }
-                    }
-
-                    if (healing)
-                    {
-                        if (health < 100)
-                        {
-                            healingCD -= Time.deltaTime;
-                            if (healingCD <= 0)
-                            {
-                                SetHealth(health + healingRate);
-                                healingCD = healingReset;
-                            }
-                        }
-                    }
                 }
 
                 if (IsLocalPlayer)
@@ -254,21 +199,6 @@ public class GameCharacter : NetworkComponent
                     else
                     {
                         cam.transform.position = transform.position + new Vector3(0,12,0);
-                    }
-
-                    if (Input.GetAxisRaw("Vertical") > 0.08 || Input.GetAxisRaw("Vertical") < -0.08)
-                    {
-                        float forward = Input.GetAxisRaw("Vertical");
-                        Vector3 vel = new Vector3(0, myRig.velocity.y, 0) +
-                            this.transform.forward * forward * velRate;
-                        SendCommand("VELO", vel.ToString());
-                    }
-                    if (Input.GetAxisRaw("Horizontal") > 0.08 || Input.GetAxisRaw("Horizontal") < -0.08)
-                    {
-                        float turn = Input.GetAxisRaw("Horizontal");
-                        Vector3 rotates = new Vector3(0, turn * turnRate, 0);
-
-                        SendCommand("ROTATES", rotates.ToString());
                     }
 
                     if(Input.GetAxisRaw("Jump") > 0 && CanShoot)
@@ -300,6 +230,38 @@ public class GameCharacter : NetworkComponent
                 }
             }
             yield return new WaitForSeconds(MyCore.MasterTimer);
+        }
+    }
+
+    //Timer for infected status effect. Lowers health every few seconds.
+    public IEnumerator InfectedStatus()
+    {
+        if (IsServer)
+        {
+            while (isInfected)
+            {
+                yield return new WaitForSeconds(infectedReset);
+                if (isInfected)
+                {
+                    SetHealth(health - infectedDamageRate);
+                }
+            }
+        }
+    }
+
+    //Timer for healing over time effect. Increases health every few seconds if player has the healing effect.
+    public IEnumerator HealingOverTime()
+    {
+        if (IsServer)
+        {
+            while (healing)
+            {
+                yield return new WaitForSeconds(healingReset);
+                if (health < 100 && healing)
+                {
+                    SetHealth(health + healingRate);
+                }
+            }
         }
     }
 
@@ -347,25 +309,31 @@ public class GameCharacter : NetworkComponent
         }
     }
 
+    //Infects the player that calls this function. Does not infect if they have the healing status.
     public void Infect()
     {
         if(IsServer)
         {
-            isInfected = true;
-            infectedCD = infectedReset;
-            SendUpdate("INFECTION", true.ToString());
-            SetSpeed(velRate - 1.0f);
+            if (!healing)
+            {
+                isInfected = true;
+                //infectedCD = infectedReset;
+                SendUpdate("INFECTION", true.ToString());
+                SetSpeed(velRate - 1.0f);
+                StartCoroutine(InfectedStatus());
+            }
         }
     }
 
+    //Cures the infection of the player that calls this function.
     public void CureInfection()
     {
-        if(IsServer)
+        if (IsServer)
         {
             isInfected = false;
             infectedCD = infectedReset;
             SendUpdate("INFECTION", false.ToString());
-            SetSpeed(normalSpeed);
+            SetSpeed(velRate + 1.0f);
         }
     }
 
@@ -430,12 +398,12 @@ public class GameCharacter : NetworkComponent
             if (other.CompareTag("HealingPad"))
             {
                 healing = true;
-                SendUpdate("HEALING", true.ToString());
-
-                if (isInfected)
+                if(isInfected)
                 {
                     CureInfection();
                 }
+                StartCoroutine(HealingOverTime());
+                SendUpdate("HEALING", true.ToString());
             }
 
             if (other.CompareTag("radius"))
