@@ -407,6 +407,16 @@ public class GameCharacter : NetworkComponent
                 }
             }
 
+            if (other.CompareTag("TP"))
+            {
+                if (inventory.tpCarried < 2)
+                {
+                    SetTPCarried(inventory.tpCarried + 1);
+                    MyCore.NetDestroyObject(other.GetComponent<NetworkID>().NetId);
+                }
+            }
+
+
             if (other.CompareTag("House"))
             {
                 if (inventory.tpCarried > 0)
