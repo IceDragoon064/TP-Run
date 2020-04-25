@@ -7,6 +7,10 @@ public class PlayerMovement : NetworkComponent
 {
     public Rigidbody myRig;
     public GameCharacter myChar;
+    public Animator anim;
+
+    public bool moving = false;
+
     public override void HandleMessage(string flag, string value)
     {
         char[] remove = { '(', ')' };
@@ -37,16 +41,29 @@ public class PlayerMovement : NetworkComponent
                 myRig.angularVelocity = rot;
             }
         }
+
+        if (flag == "MOVING")
+        {
+            moving = bool.Parse(value);
+
+            if(IsServer)
+            {
+                SendUpdate("MOVING", bool.Parse(value).ToString());
+            }
+        }
     }
 
     public override IEnumerator SlowUpdate()
     {
         myRig = this.GetComponent<Rigidbody>();
         myChar = this.GetComponent<GameCharacter>();
+        anim = this.GetComponent<Animator>();
+        int walkHash = Animator.StringToHash("speed");
+        int angHash = Animator.StringToHash("angularRotation");
 
         while (true)
         {
-            if(this.IsLocalPlayer)
+            if(IsLocalPlayer)
             {
                 if (Input.GetAxisRaw("Vertical") > 0.08 || Input.GetAxisRaw("Vertical") < -0.08)
                 {
@@ -54,6 +71,15 @@ public class PlayerMovement : NetworkComponent
                     Vector3 vel = new Vector3(0, myRig.velocity.y, 0) +
                         this.transform.forward * forward * myChar.velRate;
                     SendCommand("VELO", vel.ToString());
+                    moving = true;
+                    SendCommand("MOVING", true.ToString());
+                }
+                else
+                {
+                    if(moving)
+                    {
+                        SendCommand("MOVING", false.ToString());
+                    }
                 }
                 if (Input.GetAxisRaw("Horizontal") > 0.08 || Input.GetAxisRaw("Horizontal") < -0.08)
                 {
@@ -61,6 +87,28 @@ public class PlayerMovement : NetworkComponent
                     Vector3 rotates = new Vector3(0, turn * myChar.turnRate, 0);
 
                     SendCommand("ROTATES", rotates.ToString());
+                    moving = true;
+                    SendCommand("MOVING", true.ToString());
+                }
+                else
+                {
+                    if (moving)
+                    {
+                        SendCommand("MOVING", false.ToString());
+                    }
+                }
+            }
+
+            if (IsClient)
+            {
+                //Probably changing to boolean stuff but tired now
+                if(moving)
+                {
+                    anim.SetFloat(walkHash, 1f);
+                }
+                else
+                {
+                    anim.SetFloat(walkHash, 0f);
                 }
             }
 
