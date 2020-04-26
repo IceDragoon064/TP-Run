@@ -60,9 +60,9 @@
      <Compile Include="Assets\Characters\Scripts\GameCharacter.cs" />
      <Compile Include="Assets\Characters\Scripts\HitBox.cs" />
      <Compile Include="Assets\Characters\Scripts\Inventory.cs" />
-     <Compile Include="Assets\Characters\Scripts\NameLookAtCamera.cs" />
      <Compile Include="Assets\Characters\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\Characters\Scripts\ScoreAndUI.cs" />
+     <Compile Include="Assets\Characters\UI\Scripts\NameLookAtCamera.cs" />
+     <Compile Include="Assets\Characters\UI\Scripts\ScoreAndUI.cs" />
      <Compile Include="Assets\Fonts\Script\scriptTexttest.cs" />
      <Compile Include="Assets\GameManager\Scripts\GameManagingScript.cs" />
      <Compile Include="Assets\NetworkEngine\GameManagerTemplate.cs" />
@@ -75,6 +75,7 @@
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\GenericMovingObject.cs" />
      <Compile Include="Assets\Scripts\NetworkRigidbody.cs" />
+     <Compile Include="Assets\Scripts\NetworkRigidbodyTwo.cs" />
      <Compile Include="Assets\Scripts\NetworkTransform.cs" />
      <Compile Include="Assets\Scripts\UI_Controller.cs" />
      <Compile Include="Assets\ToiletPaper\Scripts\SpinTP.cs" />

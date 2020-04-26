@@ -11,6 +11,7 @@ ScriptsOnlyBuild:
     - NameLookAtCamera
     - NetworkPlayerOption
     - NetworkRigidbody
+    - NetworkRigidbodyTwo
     - PlayerMovement
     - ScoreAndUI
     - UI_Controller
@@ -19,6 +20,7 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnimatorStateTransitionInspector
     - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
@@ -140,6 +142,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12986}
     - Class: 114
       Script: {instanceID: 13002}
+    - Class: 114
+      Script: {instanceID: 38494}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -587,7 +591,7 @@ ScriptsOnlyBuild:
     className: ScoreAndUI
   - hash:
       serializedVersion: 2
-      Hash: 7d11b71111b7a6baa98c3587ee48d873
+      Hash: 0319392a868bd111eb213758fc802b95
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -617,7 +621,7 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
-      Hash: 0b364409e78a9404ba9ac523fd710035
+      Hash: 495d8f32748df2c091a328ce0b51e872
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameCharacter
@@ -711,6 +715,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 5cc992fe38a08dbc27cbcf3cadc396b6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: NetworkRigidbodyTwo
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

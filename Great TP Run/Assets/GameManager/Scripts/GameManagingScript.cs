@@ -92,14 +92,6 @@ public class GameManagingScript : NetworkComponent
                     GameEnded = false;
                 }
 
-                /*
-                GameObject[] coins = GameObject.FindGameObjectsWithTag("coin");
-
-                if (coins.Length > 0)
-                {
-                    GameEnded = false;
-                }*/
-
                 yield return new WaitForSeconds(MyCore.MasterTimer);
             }
 

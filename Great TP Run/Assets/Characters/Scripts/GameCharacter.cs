@@ -10,8 +10,9 @@ public class GameCharacter : NetworkComponent
     public string Pname;
     public int score;
     public int color;
-    
+
     //Player Stats
+    public float maxHealth = 100;
     public float health = 100;
     public float healingRate = 10;
     public float infectedDamageRate = 10;
@@ -180,7 +181,7 @@ public class GameCharacter : NetworkComponent
                     //Player dies and respawns at their home. Player loses TP carried. Cures Infection.
                     if (health <= 0)
                     {
-                        SetHealth(100);
+                        SetHealth(maxHealth);
                         GameObject[] spawnObjects = GameObject.FindGameObjectsWithTag("Respawn");
                         this.gameObject.GetComponent<Rigidbody>().position = spawnObjects[Owner % 4].transform.position;
                         SetScore(score - 1);
@@ -257,7 +258,7 @@ public class GameCharacter : NetworkComponent
             while (healing)
             {
                 yield return new WaitForSeconds(healingReset);
-                if (health < 100 && healing)
+                if (health < maxHealth && healing)
                 {
                     SetHealth(health + healingRate);
                 }
@@ -291,9 +292,9 @@ public class GameCharacter : NetworkComponent
         if(IsServer)
         {
             health = value;
-            if(health > 100)
+            if(health > maxHealth)
             {
-                health = 100;
+                health = maxHealth;
             }
             SendUpdate("HEALTH", health.ToString());
         }
@@ -317,7 +318,6 @@ public class GameCharacter : NetworkComponent
             if (!healing)
             {
                 isInfected = true;
-                //infectedCD = infectedReset;
                 SendUpdate("INFECTION", true.ToString());
                 SetSpeed(velRate - 1.0f);
                 StartCoroutine(InfectedStatus());
@@ -363,16 +363,6 @@ public class GameCharacter : NetworkComponent
             if (other.CompareTag("enemy"))
             {
                 SetHealth(0);
-            }
-
-            //Change tag to toilet paper or something later on
-            if (other.CompareTag("coin"))
-            {
-                if (inventory.tpCarried < 2)
-                {
-                    SetTPCarried(inventory.tpCarried + 1);
-                    MyCore.NetDestroyObject(other.GetComponent<NetworkID>().NetId);
-                }
             }
 
             if (other.CompareTag("TP"))

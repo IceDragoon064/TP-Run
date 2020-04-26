@@ -10,6 +10,7 @@ public class PlayerMovement : NetworkComponent
     public Animator anim;
 
     public bool moving = false;
+    public bool turning = false;
 
     public override void HandleMessage(string flag, string value)
     {
@@ -51,6 +52,16 @@ public class PlayerMovement : NetworkComponent
                 SendUpdate("MOVING", bool.Parse(value).ToString());
             }
         }
+
+        if (flag == "TURNING")
+        {
+            turning = bool.Parse(value);
+
+            if(IsServer)
+            {
+                SendUpdate("TURNING", bool.Parse(value).ToString());
+            }
+        }
     }
 
     public override IEnumerator SlowUpdate()
@@ -58,7 +69,7 @@ public class PlayerMovement : NetworkComponent
         myRig = this.GetComponent<Rigidbody>();
         myChar = this.GetComponent<GameCharacter>();
         anim = this.GetComponent<Animator>();
-        int walkHash = Animator.StringToHash("speed");
+        int movingHash = Animator.StringToHash("moving");
         int angHash = Animator.StringToHash("angularRotation");
 
         while (true)
@@ -87,14 +98,14 @@ public class PlayerMovement : NetworkComponent
                     Vector3 rotates = new Vector3(0, turn * myChar.turnRate, 0);
 
                     SendCommand("ROTATES", rotates.ToString());
-                    moving = true;
-                    SendCommand("MOVING", true.ToString());
+                    turning = true;
+                    SendCommand("TURNING", true.ToString());
                 }
                 else
                 {
-                    if (moving)
+                    if (turning)
                     {
-                        SendCommand("MOVING", false.ToString());
+                        SendCommand("TURNING", false.ToString());
                     }
                 }
             }
@@ -102,13 +113,13 @@ public class PlayerMovement : NetworkComponent
             if (IsClient)
             {
                 //Probably changing to boolean stuff but tired now
-                if(moving)
+                if(moving || turning)
                 {
-                    anim.SetFloat(walkHash, 1f);
+                    anim.SetBool(movingHash, true);
                 }
                 else
                 {
-                    anim.SetFloat(walkHash, 0f);
+                    anim.SetBool(movingHash, false);
                 }
             }
 

@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 439102}
   - component: {fileID: 9517276}
   - component: {fileID: 1638032832168783615}
+  - component: {fileID: 850660278549546457}
   - component: {fileID: 5714390738939017044}
   - component: {fileID: 452166282608105639}
   - component: {fileID: 4387151104524136797}
@@ -257,7 +258,7 @@ MonoBehaviour:
   UpdateFrequency: 0.1
   MyCore: {fileID: 0}
   GameObjectMessages: 
---- !u!114 &5714390738939017044
+--- !u!114 &850660278549546457
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -265,6 +266,36 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119000}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405f83f348c18d540ae875d4c2dd2c94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDirty: 0
+  IsClient: 0
+  IsServer: 0
+  IsLocalPlayer: 0
+  Owner: 0
+  Type: 0
+  NetId: 0
+  MyCore: {fileID: 0}
+  MyId: {fileID: 0}
+  MyRig: {fileID: 0}
+  LastPosition: {x: 0, y: 0, z: 0}
+  LastVelocity: {x: 0, y: 0, z: 0}
+  LastRotation: {x: 0, y: 0, z: 0}
+  LastRotAcc: {x: 0, y: 0, z: 0}
+  SyncAngVel: 0
+  threshold: 0
+  VelocityCorrect: {x: 0, y: 0, z: 0}
+  LastValidVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &5714390738939017044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119000}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 828a30058bce57c4aa9c18b5f93a5b81, type: 3}
   m_Name: 
@@ -307,6 +338,7 @@ MonoBehaviour:
   Pname: 
   score: 0
   color: 0
+  maxHealth: 100
   health: 100
   healingRate: 10
   infectedDamageRate: 10
@@ -380,6 +412,7 @@ MonoBehaviour:
   myChar: {fileID: 0}
   anim: {fileID: 0}
   moving: 0
+  turning: 0
 --- !u!114 &6989514893706603996
 MonoBehaviour:
   m_ObjectHideFlags: 0
