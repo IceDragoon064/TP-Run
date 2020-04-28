@@ -20,11 +20,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnimatorStateTransitionInspector
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -87,63 +84,63 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11152}
+      Script: {instanceID: 11544}
     - Class: 114
-      Script: {instanceID: 11286}
+      Script: {instanceID: 11678}
     - Class: 114
-      Script: {instanceID: 11314}
+      Script: {instanceID: 11706}
     - Class: 114
-      Script: {instanceID: 11316}
+      Script: {instanceID: 11708}
     - Class: 114
-      Script: {instanceID: 11346}
+      Script: {instanceID: 11738}
     - Class: 114
-      Script: {instanceID: 11356}
+      Script: {instanceID: 11748}
     - Class: 114
-      Script: {instanceID: 11564}
+      Script: {instanceID: 11956}
     - Class: 114
-      Script: {instanceID: 11652}
+      Script: {instanceID: 12024}
     - Class: 114
-      Script: {instanceID: 11740}
+      Script: {instanceID: 12046}
     - Class: 114
-      Script: {instanceID: 11758}
+      Script: {instanceID: 12134}
     - Class: 114
-      Script: {instanceID: 11816}
+      Script: {instanceID: 12152}
     - Class: 114
-      Script: {instanceID: 11934}
+      Script: {instanceID: 12210}
     - Class: 114
-      Script: {instanceID: 12124}
+      Script: {instanceID: 12328}
     - Class: 114
-      Script: {instanceID: 12226}
+      Script: {instanceID: 12518}
     - Class: 114
-      Script: {instanceID: 12314}
+      Script: {instanceID: 12620}
     - Class: 114
-      Script: {instanceID: 12342}
+      Script: {instanceID: 12708}
     - Class: 114
-      Script: {instanceID: 12608}
-    - Class: 114
-      Script: {instanceID: 12702}
-    - Class: 114
-      Script: {instanceID: 12746}
-    - Class: 114
-      Script: {instanceID: 12764}
-    - Class: 114
-      Script: {instanceID: 12802}
-    - Class: 114
-      Script: {instanceID: 12838}
-    - Class: 114
-      Script: {instanceID: 12882}
-    - Class: 114
-      Script: {instanceID: 12940}
-    - Class: 114
-      Script: {instanceID: 12960}
-    - Class: 114
-      Script: {instanceID: 12972}
-    - Class: 114
-      Script: {instanceID: 12986}
+      Script: {instanceID: 12736}
     - Class: 114
       Script: {instanceID: 13002}
     - Class: 114
-      Script: {instanceID: 38494}
+      Script: {instanceID: 13096}
+    - Class: 114
+      Script: {instanceID: 13140}
+    - Class: 114
+      Script: {instanceID: 13158}
+    - Class: 114
+      Script: {instanceID: 13196}
+    - Class: 114
+      Script: {instanceID: 13232}
+    - Class: 114
+      Script: {instanceID: 13276}
+    - Class: 114
+      Script: {instanceID: 13334}
+    - Class: 114
+      Script: {instanceID: 13354}
+    - Class: 114
+      Script: {instanceID: 13366}
+    - Class: 114
+      Script: {instanceID: 13380}
+    - Class: 114
+      Script: {instanceID: 13396}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -337,6 +334,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 5cc992fe38a08dbc27cbcf3cadc396b6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: NetworkRigidbodyTwo
   - hash:
       serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
@@ -715,14 +718,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 5cc992fe38a08dbc27cbcf3cadc396b6
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: NetworkRigidbodyTwo
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/andre/Desktop/School/Game Design and Development/Unity Projects/TP-Run/Great
-    TP Run/BuildAndRun/Great TP Run.exe
+  playerPath: D:/Github/TP-Run/Great TP Run/NewBuild/Great TP Run.exe

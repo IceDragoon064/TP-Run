@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -112,7 +112,7 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 678, y: 492}
+  m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
   controlID: 18
@@ -137,10 +137,10 @@ MonoBehaviour:
     y: 0
     width: 1514
     height: 947
-  m_MinSize: {x: 402, y: 492}
+  m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 73
+  controlID: 89
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -162,10 +162,10 @@ MonoBehaviour:
     y: 0
     width: 1514
     height: 574
-  m_MinSize: {x: 402, y: 221}
-  m_MaxSize: {x: 8002, y: 4021}
+  m_MinSize: {x: 403, y: 221}
+  m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 74
+  controlID: 90
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -185,8 +185,8 @@ MonoBehaviour:
     y: 0
     width: 237
     height: 574
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -220,7 +220,7 @@ MonoBehaviour:
   - {fileID: 16}
   - {fileID: 12}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 2
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -455,24 +455,24 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 172}
+      scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 383ffeff543ffeff1040feff9a61feffb661feff5862feffe294fffffe94ffffa095ffff2eafffff4aaffffffcafffff90c8ffffe2d0fffffad0ffffaed1ffffbed2ffffd6d2ffff88d3ffff70fbffff9c1d0100
+      m_ExpandedIDs: 18a9feff34a9feff36a9feff52aefeff6eaefeff70aefeff22affeff3eaffefff0affeffa2b4feffbeb4feff70b5feff0ebafeff2abafeffdcbafeff12c2feff2ec2feff32c2feffbcc2feffd8c2feffdac2feff5ac3feff76c3feff78c3feffd2c3feffeec3feffa0c4feffd2d4feff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: tp_roll_01
+        m_OriginalName: tp_roll_01
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -76680
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -518,9 +518,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 231.59344, y: -39.952713, z: 31.680773}
+    m_Target: {x: 9.768084, y: 180.05414, z: -204.12181}
     speed: 2
-    m_Value: {x: 231.59344, y: -39.952713, z: 31.680773}
+    m_Value: {x: 9.768084, y: 180.05414, z: -204.12181}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -566,20 +566,20 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.025149133, y: -0.9745203, z: 0.1656567, w: -0.150547}
+    m_Target: {x: -0.17608067, y: -0.7121202, z: 0.19306608, w: -0.6519523}
     speed: 2
-    m_Value: {x: -0.025392143, y: -0.9740845, z: 0.16558328, w: -0.15197602}
+    m_Value: {x: -0.17604232, y: -0.711965, z: 0.19302401, w: -0.6518103}
   m_Size:
-    m_Target: 196.72813
+    m_Target: 429.34036
     speed: 2
-    m_Value: 205.99805
+    m_Value: 449.57104
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 2
-    m_SpeedNormalized: 1
+    m_Speed: 0.5
+    m_SpeedNormalized: 0.2500004
     m_SpeedMin: 0.01
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -618,10 +618,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 403
+    x: 237
     y: 73
-    width: 962
-    height: 552
+    width: 1275
+    height: 553
   m_ViewDataDictionary: {fileID: 0}
 --- !u!114 &17
 MonoBehaviour:
@@ -662,35 +662,34 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/NetworkPlayerManager/Prefab
+    - Assets/Survival Tools
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/NetworkPlayerManager/Prefab
+  - Assets/Survival Tools
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: C:\Users\andre\Desktop\School\Game Design and Development\Unity
-    Projects\TP-Run\Great TP Run
+  m_LastProjectPath: D:\Github\TP-Run\Great TP Run
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 200}
-    m_SelectedIDs: 92420000
-    m_LastClickedID: 17042
-    m_ExpandedIDs: 000000005441000056410000584100005a4100005c4100005e4100006041000064410000444200009042000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 384b0100
+    m_LastClickedID: 84792
+    m_ExpandedIDs: 000000006290000064900000669000006a9000006c9000006e9000002691000036910000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: NetworkPlayerManager
-      m_OriginalName: NetworkPlayerManager
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 17040
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
@@ -704,7 +703,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000005441000056410000584100005a4100005c4100005e41000060410000
+    m_ExpandedIDs: 00000000629000006490000066900000689000006a9000006c9000006e900000709000007290000074900000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -735,18 +734,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c623000000000000ae690000b6440000d04e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: NetworkPlayerManager
-      m_OriginalName: NetworkPlayerManager
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 14988
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
