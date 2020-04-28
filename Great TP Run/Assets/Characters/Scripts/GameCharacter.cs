@@ -119,6 +119,11 @@ public class GameCharacter : NetworkComponent
             }
         }
 
+        if(flag == "HASSPEED")
+        {
+            spedUp = bool.Parse(value);
+        }
+
         if (flag == "HEALING")
         {
             healing = bool.Parse(value);
@@ -341,8 +346,23 @@ public class GameCharacter : NetworkComponent
     {
         if(IsServer)
         {
-            velRate = 5.5f;
-            SendUpdate("SpeedUp", velRate.ToString());
+            velRate = 7.5f;
+            spedUp = true;
+            SendUpdate("HASSPEED", false.ToString());
+            SetSpeed(velRate);
+            SendUpdate("SPEED", velRate.ToString());
+        }
+    }
+
+    public void NormalSpeed()
+    {
+        if(IsServer)
+        {
+            velRate = normalSpeed;
+            SetSpeed(velRate);
+            spedUp = false;
+            SendUpdate("HASSPEED", false.ToString());
+            SendUpdate("SPEED", velRate.ToString());
         }
     }
 
@@ -351,6 +371,14 @@ public class GameCharacter : NetworkComponent
         yield return new WaitForSeconds(shootcooldown);
         CanShoot = true;
         SendUpdate("CS", true.ToString());
+    }
+
+    public IEnumerator SpeedCountdown()
+    {
+        yield return new WaitForSeconds(10.0f);
+        spedUp = false;
+        NormalSpeed();
+
     }
 
     //Collisions
@@ -425,7 +453,8 @@ public class GameCharacter : NetworkComponent
             {
                 if(spedUp == false)
                 {
-
+                    MyCore.NetDestroyObject(other.GetComponent<NetworkID>().NetId);
+                    IncreaseSpeed();
                 }
             }
 
@@ -433,11 +462,9 @@ public class GameCharacter : NetworkComponent
             {
                 if(isInfected == true)
                 {
-
+                    CureInfection();
                 }
             }
-
-
         }
 
         if(IsClient)

@@ -11,6 +11,7 @@ TagManager:
   - HealingPad
   - radius
   - TP
+  - SpeedDrink
   layers:
   - Default
   - TransparentFX
