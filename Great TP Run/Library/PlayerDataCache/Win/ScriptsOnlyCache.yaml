@@ -20,11 +20,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnimatorStateTransitionInspector
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -87,63 +84,63 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11152}
+      Script: {instanceID: 11154}
     - Class: 114
-      Script: {instanceID: 11286}
-    - Class: 114
-      Script: {instanceID: 11314}
+      Script: {instanceID: 11288}
     - Class: 114
       Script: {instanceID: 11316}
     - Class: 114
-      Script: {instanceID: 11346}
+      Script: {instanceID: 11318}
     - Class: 114
-      Script: {instanceID: 11356}
+      Script: {instanceID: 11348}
     - Class: 114
-      Script: {instanceID: 11564}
+      Script: {instanceID: 11358}
     - Class: 114
-      Script: {instanceID: 11652}
+      Script: {instanceID: 11566}
     - Class: 114
-      Script: {instanceID: 11740}
+      Script: {instanceID: 11634}
     - Class: 114
-      Script: {instanceID: 11758}
+      Script: {instanceID: 11656}
     - Class: 114
-      Script: {instanceID: 11816}
+      Script: {instanceID: 11744}
     - Class: 114
-      Script: {instanceID: 11934}
+      Script: {instanceID: 11762}
     - Class: 114
-      Script: {instanceID: 12124}
+      Script: {instanceID: 11820}
     - Class: 114
-      Script: {instanceID: 12226}
+      Script: {instanceID: 11938}
     - Class: 114
-      Script: {instanceID: 12314}
+      Script: {instanceID: 12128}
     - Class: 114
-      Script: {instanceID: 12342}
+      Script: {instanceID: 12230}
     - Class: 114
-      Script: {instanceID: 12608}
+      Script: {instanceID: 12318}
     - Class: 114
-      Script: {instanceID: 12702}
+      Script: {instanceID: 12346}
     - Class: 114
-      Script: {instanceID: 12746}
+      Script: {instanceID: 12612}
     - Class: 114
-      Script: {instanceID: 12764}
+      Script: {instanceID: 12706}
     - Class: 114
-      Script: {instanceID: 12802}
+      Script: {instanceID: 12750}
     - Class: 114
-      Script: {instanceID: 12838}
+      Script: {instanceID: 12768}
     - Class: 114
-      Script: {instanceID: 12882}
+      Script: {instanceID: 12806}
     - Class: 114
-      Script: {instanceID: 12940}
+      Script: {instanceID: 12842}
     - Class: 114
-      Script: {instanceID: 12960}
+      Script: {instanceID: 12886}
     - Class: 114
-      Script: {instanceID: 12972}
+      Script: {instanceID: 12944}
     - Class: 114
-      Script: {instanceID: 12986}
+      Script: {instanceID: 12964}
     - Class: 114
-      Script: {instanceID: 13002}
+      Script: {instanceID: 12976}
     - Class: 114
-      Script: {instanceID: 38494}
+      Script: {instanceID: 12990}
+    - Class: 114
+      Script: {instanceID: 13006}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -337,6 +334,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 5cc992fe38a08dbc27cbcf3cadc396b6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: NetworkRigidbodyTwo
   - hash:
       serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
@@ -715,12 +718,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 5cc992fe38a08dbc27cbcf3cadc396b6
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: NetworkRigidbodyTwo
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
