@@ -11,6 +11,11 @@ public class BadGuyMovement : NetworkComponent
     public GameManagingScript manager;
     public float directionTimer = 3f;
     public float directionReset = 3f;
+    public float directionLongReset = 5f;
+    public bool isInfected = false;
+    public Animator anim;
+
+    public int routeNumber = 0;
     public override void HandleMessage(string flag, string value)
     {
        
@@ -19,6 +24,8 @@ public class BadGuyMovement : NetworkComponent
     public override IEnumerator SlowUpdate()
     {
         manager = FindObjectOfType<GameManagingScript>();
+        anim = this.GetComponent<Animator>();
+        int movingHash = Animator.StringToHash("moving");
 
         //Changing the direction the bad guy is facing based on its initial speed.
         if (speedZ > 0)
@@ -39,27 +46,87 @@ public class BadGuyMovement : NetworkComponent
         {
             if(IsServer && manager.GameStarted && !manager.GameEnded)
             {
-                transform.position += new Vector3(speedX, 0, speedZ);
-
-                if (directionTimer > 0)
+                if(routeNumber == 1)
                 {
-                    directionTimer -= MyCore.MasterTimer;
+                    transform.position += new Vector3(speedX, 0, speedZ);
+
+                    if (directionTimer > 0)
+                    {
+                        directionTimer -= MyCore.MasterTimer;
+                    }
+                    else
+                    {
+                        speedX *= -1;
+                        speedZ *= -1;
+
+                        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 180, 0));
+
+
+                        directionTimer = directionReset;
+                    }
                 }
-                else
+                else if(routeNumber == 2)
                 {
-                    speedX *= -1;
-                    speedZ *= -1;
+                    transform.position += new Vector3(speedX, 0, speedZ);
 
-                    transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 180, 0));
+                    if (directionTimer > 0)
+                    {
+                        directionTimer -= MyCore.MasterTimer;
+                    }
+                    else
+                    {
+                        //Going left looking at it from the houses direction. Switch directions to go away from houses.
+                        if(speedX > 0 && speedZ == 0) 
+                        {
+                            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 90, 0));
 
+                            speedX = 0;
+                            speedZ = -.1f;
 
-                    directionTimer = directionReset;
+                            directionTimer = directionLongReset;
+                        }
+                        else if(speedZ < 0 && speedX == 0)
+                        {
+                            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 90, 0));
+
+                            speedX = -.1f;
+                            speedZ = 0;
+
+                            directionTimer = directionReset;
+                        }
+                        else if(speedX < 0 && speedZ == 0)
+                        {
+                            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 90, 0));
+
+                            speedX = 0;
+                            speedZ = .1f;
+
+                            directionTimer = directionLongReset;
+                        }
+                        else if(speedZ > 0 && speedX == 0)
+                        {
+                            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 90, 0));
+
+                            speedX = .1f;
+                            speedZ = 0;
+
+                            directionTimer = directionReset;
+                        }
+                    }
                 }
+                else if(routeNumber == 2)
+                {
 
-                if(health <= 0)
+                }
+                if (health <= 0)
                 {
                     MyCore.NetDestroyObject(this.NetId);
                 }
+            }
+
+            if (IsClient)
+            {
+                anim.SetBool(movingHash, true);
             }
 
             yield return new WaitForSeconds(MyCore.MasterTimer);

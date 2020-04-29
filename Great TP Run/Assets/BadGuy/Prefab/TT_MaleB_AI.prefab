@@ -1047,7 +1047,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2433966671556688636}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 195.47806, y: 0.795207, z: 166.37567}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1057,7 +1057,7 @@ Transform:
   - {fileID: 2653138281380313207}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &2433966671556688743
 Animator:
   serializedVersion: 3
@@ -1202,8 +1202,11 @@ MonoBehaviour:
   spedUp: 0
   isInfected: 0
   healing: 0
+  dead: 0
   lerpVal: 0.25
   lerpMag: 0.5
+  SpawnPoint: {fileID: 0}
+  HomePoint: {fileID: 0}
   AttackBox: {fileID: 0}
   Overlay: {fileID: 2433966671556688347}
   inventory: {fileID: 2433966671556688287}
@@ -1229,6 +1232,7 @@ MonoBehaviour:
   MyCore: {fileID: 0}
   MyId: {fileID: 0}
   tpCarried: 0
+  maxCarried: 3
 --- !u!114 &2433966671556688349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1254,7 +1258,10 @@ MonoBehaviour:
   myChar: {fileID: 0}
   anim: {fileID: 0}
   moving: 0
+  movingBack: 0
   turning: 0
+  running: 0
+  dead: 0
 --- !u!114 &2433966671556688347
 MonoBehaviour:
   m_ObjectHideFlags: 0
