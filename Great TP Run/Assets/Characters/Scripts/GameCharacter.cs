@@ -38,6 +38,9 @@ public class GameCharacter : NetworkComponent
     public float infectedCD = 0.6f;
     public float infectedReset = 2f;
 
+    //Speed buff timer
+    public float speedTime = float.PositiveInfinity;
+
     //movement
     public float turnRate = 3.5f;
     public float velRate = 4.0f;
@@ -47,10 +50,14 @@ public class GameCharacter : NetworkComponent
     public bool spedUp = false;
     public bool isInfected = false;
     public bool healing = false;
+    public bool dead = false;
 
     //Testing variables
     public float lerpVal = .25f;
     public float lerpMag = .5f;
+
+    public GameObject SpawnPoint;
+    public GameObject HomePoint;
 
     public GameObject AttackBox;
     public ScoreAndUI Overlay;
@@ -157,9 +164,14 @@ public class GameCharacter : NetworkComponent
             }
         }
 
-        if( flag == "CS")
+        if (flag == "CS")
         {
             CanShoot = bool.Parse(value);
+        }
+
+        if (flag == "DEAD")
+        {
+            dead = bool.Parse(value);
         }
     }
 
@@ -176,6 +188,11 @@ public class GameCharacter : NetworkComponent
             cam.transform.position = transform.position + new Vector3(0, 15f, 0);
             cam.transform.LookAt(transform);
         }
+
+        if(IsServer)
+        {
+            SpawnPoint = manager.spawnObjects[Owner % 4];
+        }
         
         while(true)
         {
@@ -184,14 +201,20 @@ public class GameCharacter : NetworkComponent
                 if (IsServer)
                 {
                     //Player dies and respawns at their home. Player loses TP carried. Cures Infection.
-                    if (health <= 0)
+                    if (health <= 0 && !dead)
                     {
-                        SetHealth(maxHealth);
-                        GameObject[] spawnObjects = GameObject.FindGameObjectsWithTag("Respawn");
-                        this.gameObject.GetComponent<Rigidbody>().position = spawnObjects[Owner % 4].transform.position;
-                        SetScore(score - 1);
-                        CureInfection();
-                        SetTPCarried(0);
+                        dead = true;
+                        SendUpdate("DEAD", true.ToString());
+                        StartCoroutine(PlayerDeath());
+                    }
+
+                    if(spedUp)
+                    {
+                        if(Time.time >= speedTime)
+                        {
+                            speedTime = float.PositiveInfinity;
+                            NormalSpeed();
+                        }
                     }
                 }
 
@@ -236,6 +259,26 @@ public class GameCharacter : NetworkComponent
                 }
             }
             yield return new WaitForSeconds(MyCore.MasterTimer);
+        }
+    }
+
+    public IEnumerator PlayerDeath()
+    {
+        if(IsServer)
+        {
+            yield return new WaitForSeconds(3);
+            dead = false;
+            SendUpdate("DEAD", false.ToString());
+            SetHealth(maxHealth);
+            GameObject[] spawnObjects = manager.spawnObjects;
+            this.gameObject.GetComponent<Rigidbody>().position = SpawnPoint.transform.position;
+            SetScore(score - 1);
+            CureInfection();
+            SetTPCarried(0);
+            speedTime = float.PositiveInfinity;
+            spedUp = false;
+            SendUpdate("HASSPEED", spedUp.ToString());
+            SetSpeed(normalSpeed);
         }
     }
 
@@ -346,11 +389,17 @@ public class GameCharacter : NetworkComponent
     {
         if(IsServer)
         {
-            velRate = 7.5f;
-            spedUp = true;
-            SendUpdate("HASSPEED", false.ToString());
-            SetSpeed(velRate);
-            SendUpdate("SPEED", velRate.ToString());
+            if(!spedUp)
+            {
+                SetSpeed(velRate + 2.5f);
+                SpeedCountdown();
+                spedUp = true;
+                SendUpdate("HASSPEED", true.ToString());
+            }
+            else
+            {
+                SpeedCountdown();
+            }
         }
     }
 
@@ -358,11 +407,9 @@ public class GameCharacter : NetworkComponent
     {
         if(IsServer)
         {
-            velRate = normalSpeed;
-            SetSpeed(velRate);
+            SetSpeed(velRate - 2.5f);
             spedUp = false;
             SendUpdate("HASSPEED", false.ToString());
-            SendUpdate("SPEED", velRate.ToString());
         }
     }
 
@@ -373,12 +420,14 @@ public class GameCharacter : NetworkComponent
         SendUpdate("CS", true.ToString());
     }
 
-    public IEnumerator SpeedCountdown()
+    public void SpeedCountdown()
     {
-        yield return new WaitForSeconds(10.0f);
+        //yield return new WaitForSeconds(10.0f);
+        speedTime = Time.time + 10f;
+        /*
         spedUp = false;
         NormalSpeed();
-
+        */
     }
 
     //Collisions
@@ -395,13 +444,18 @@ public class GameCharacter : NetworkComponent
 
             if (other.CompareTag("TP"))
             {
-                if (inventory.tpCarried < 2)
+                if (inventory.tpCarried < inventory.maxCarried)
                 {
                     SetTPCarried(inventory.tpCarried + 1);
                     MyCore.NetDestroyObject(other.GetComponent<NetworkID>().NetId);
                 }
             }
 
+            if(other.CompareTag("GoldenTP"))
+            {
+                SetTPCarried(inventory.tpCarried + 3);
+                MyCore.NetDestroyObject(other.GetComponent<NetworkID>().NetId);
+            }
 
             if (other.CompareTag("House"))
             {

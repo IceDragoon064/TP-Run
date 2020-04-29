@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4528477828364640}
   - component: {fileID: 33763495029525958}
   - component: {fileID: 23466150907217158}
+  - component: {fileID: 2666542865687221953}
   - component: {fileID: 65440559600974806}
   m_Layer: 0
   m_Name: Cola Can
@@ -80,6 +81,28 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2666542865687221953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705129010167144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1245fa9dfe2c47a4ba554d698f69f343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 0
+  Owner: -10
+  NetId: -10
+  IsInit: 0
+  IsLocalPlayer: 0
+  IsServer: 0
+  IsClient: 0
+  UpdateFrequency: 0.1
+  MyCore: {fileID: 0}
+  GameObjectMessages: 
 --- !u!65 &65440559600974806
 BoxCollider:
   m_ObjectHideFlags: 0

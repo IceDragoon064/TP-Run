@@ -830,6 +830,10 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Police Officer
       m_Image: {fileID: 0}
+    - m_Text: Cap Man
+      m_Image: {fileID: 0}
+    - m_Text: Zombie
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

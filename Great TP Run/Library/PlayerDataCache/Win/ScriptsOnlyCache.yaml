@@ -11,7 +11,7 @@ ScriptsOnlyBuild:
     - NameLookAtCamera
     - NetworkPlayerOption
     - NetworkRigidbody
-    - NetworkRigidbodyTwo
+    - ParticleSystemActivation
     - PlayerMovement
     - ScoreAndUI
     - UI_Controller
@@ -20,8 +20,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -84,63 +86,63 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11154}
+      Script: {instanceID: 11168}
     - Class: 114
-      Script: {instanceID: 11288}
+      Script: {instanceID: 11302}
     - Class: 114
-      Script: {instanceID: 11316}
+      Script: {instanceID: 11330}
     - Class: 114
-      Script: {instanceID: 11318}
+      Script: {instanceID: 11332}
     - Class: 114
-      Script: {instanceID: 11348}
+      Script: {instanceID: 11362}
     - Class: 114
-      Script: {instanceID: 11358}
+      Script: {instanceID: 11372}
     - Class: 114
-      Script: {instanceID: 11566}
+      Script: {instanceID: 11580}
     - Class: 114
-      Script: {instanceID: 11634}
+      Script: {instanceID: 11670}
     - Class: 114
-      Script: {instanceID: 11656}
+      Script: {instanceID: 11758}
     - Class: 114
-      Script: {instanceID: 11744}
+      Script: {instanceID: 11776}
     - Class: 114
-      Script: {instanceID: 11762}
+      Script: {instanceID: 11834}
     - Class: 114
-      Script: {instanceID: 11820}
+      Script: {instanceID: 11952}
     - Class: 114
-      Script: {instanceID: 11938}
+      Script: {instanceID: 12142}
     - Class: 114
-      Script: {instanceID: 12128}
+      Script: {instanceID: 12244}
     - Class: 114
-      Script: {instanceID: 12230}
+      Script: {instanceID: 12332}
     - Class: 114
-      Script: {instanceID: 12318}
+      Script: {instanceID: 12360}
     - Class: 114
-      Script: {instanceID: 12346}
+      Script: {instanceID: 12626}
     - Class: 114
-      Script: {instanceID: 12612}
+      Script: {instanceID: 12720}
     - Class: 114
-      Script: {instanceID: 12706}
+      Script: {instanceID: 12764}
     - Class: 114
-      Script: {instanceID: 12750}
+      Script: {instanceID: 12782}
     - Class: 114
-      Script: {instanceID: 12768}
+      Script: {instanceID: 12820}
     - Class: 114
-      Script: {instanceID: 12806}
+      Script: {instanceID: 12856}
     - Class: 114
-      Script: {instanceID: 12842}
+      Script: {instanceID: 12900}
     - Class: 114
-      Script: {instanceID: 12886}
+      Script: {instanceID: 12958}
     - Class: 114
-      Script: {instanceID: 12944}
-    - Class: 114
-      Script: {instanceID: 12964}
-    - Class: 114
-      Script: {instanceID: 12976}
+      Script: {instanceID: 12978}
     - Class: 114
       Script: {instanceID: 12990}
     - Class: 114
-      Script: {instanceID: 13006}
+      Script: {instanceID: 13004}
+    - Class: 114
+      Script: {instanceID: 13020}
+    - Class: 114
+      Script: {instanceID: 55390}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -154,6 +156,10 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 205
       Script: {instanceID: 0}
@@ -594,13 +600,13 @@ ScriptsOnlyBuild:
     className: ScoreAndUI
   - hash:
       serializedVersion: 2
-      Hash: 0319392a868bd111eb213758fc802b95
+      Hash: 8733019d5dd080ab3bb6b809c4c105fd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
   - hash:
       serializedVersion: 2
-      Hash: 06f9d4034ecfb67805fe6772e66bf4e2
+      Hash: ad59c08af27e2212bef92e126833af93
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManagingScript
@@ -624,7 +630,7 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
-      Hash: 495d8f32748df2c091a328ce0b51e872
+      Hash: 1ec93b07c368f831f297950fbd4dbac5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameCharacter
@@ -718,6 +724,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 864323a4a1599d5e31b779a2507b6d7e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ParticleSystemActivation
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

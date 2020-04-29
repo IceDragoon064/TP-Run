@@ -305,6 +305,15 @@ namespace NETWORK_ENGINE
                 {
                     if (obj.Value.Owner == badConnection)   //if object's owner is the disconnecting player, it will be added to the bad objects list
                     {
+                        if(obj.Value.CompareTag("Player"))
+                        {
+                            Debug.Log("Found player disconnecting");
+                            GameCharacter discChar = obj.Value.GetComponent<GameCharacter>();
+                            if (discChar.inventory.tpCarried > 0)
+                            {
+                                Debug.Log(obj.Value.GetComponent<GameCharacter>().inventory.tpCarried);
+                            }
+                        }
                         badObjs.Add(obj.Key);
                         //I have to add the key to a temp list and delete
                         //it outside of this for loop

@@ -12,6 +12,7 @@ TagManager:
   - radius
   - TP
   - SpeedDrink
+  - GoldenTP
   layers:
   - Default
   - TransparentFX

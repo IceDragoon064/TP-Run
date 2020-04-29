@@ -10,7 +10,10 @@ public class PlayerMovement : NetworkComponent
     public Animator anim;
 
     public bool moving = false;
+    public bool movingBack = false;
     public bool turning = false;
+    public bool running = false;
+    public bool dead = false;
 
     public override void HandleMessage(string flag, string value)
     {
@@ -62,6 +65,15 @@ public class PlayerMovement : NetworkComponent
                 SendUpdate("TURNING", bool.Parse(value).ToString());
             }
         }
+        if (flag == "BACK")
+        {
+            movingBack = bool.Parse(value);
+
+            if(IsServer)
+            {
+                SendUpdate("BACK", bool.Parse(value).ToString());
+            }
+        }
     }
 
     public override IEnumerator SlowUpdate()
@@ -71,12 +83,14 @@ public class PlayerMovement : NetworkComponent
         anim = this.GetComponent<Animator>();
         int movingHash = Animator.StringToHash("moving");
         int angHash = Animator.StringToHash("angularRotation");
+        int backHash = Animator.StringToHash("back");
+        int deadHash = Animator.StringToHash("dead");
 
         while (true)
         {
-            if(IsLocalPlayer)
+            if(IsLocalPlayer && !myChar.dead)
             {
-                if (Input.GetAxisRaw("Vertical") > 0.08 || Input.GetAxisRaw("Vertical") < -0.08)
+                if (Input.GetAxisRaw("Vertical") > 0.08)
                 {
                     float forward = Input.GetAxisRaw("Vertical");
                     Vector3 vel = new Vector3(0, myRig.velocity.y, 0) +
@@ -90,6 +104,22 @@ public class PlayerMovement : NetworkComponent
                     if(moving)
                     {
                         SendCommand("MOVING", false.ToString());
+                    }
+                }
+                if(Input.GetAxisRaw("Vertical") < -0.08)
+                {
+                    float forward = Input.GetAxisRaw("Vertical");
+                    Vector3 vel = new Vector3(0, myRig.velocity.y, 0) +
+                        this.transform.forward * forward * myChar.velRate;
+                    SendCommand("VELO", vel.ToString());
+                    movingBack = true;
+                    SendCommand("BACK", true.ToString());
+                }
+                else
+                {
+                    if(movingBack)
+                    {
+                        SendCommand("BACK", false.ToString());
                     }
                 }
                 if (Input.GetAxisRaw("Horizontal") > 0.08 || Input.GetAxisRaw("Horizontal") < -0.08)
@@ -112,8 +142,11 @@ public class PlayerMovement : NetworkComponent
 
             if (IsClient)
             {
+                running = myChar.spedUp;
+                anim.SetBool("running", myChar.spedUp);
+                anim.SetBool(deadHash, myChar.dead);
                 //Probably changing to boolean stuff but tired now
-                if(moving || turning)
+                if(moving || turning || movingBack)
                 {
                     anim.SetBool(movingHash, true);
                 }
@@ -121,6 +154,18 @@ public class PlayerMovement : NetworkComponent
                 {
                     anim.SetBool(movingHash, false);
                 }
+                if(myChar.spedUp)
+                {
+                    if (movingBack)
+                    {
+                        anim.SetBool(backHash, true);
+                    }
+                    else
+                    {
+                        anim.SetBool(backHash, false);
+                    }
+                }
+                
             }
 
             yield return new WaitForSeconds(MyCore.MasterTimer);

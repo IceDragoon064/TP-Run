@@ -6,6 +6,7 @@ using NETWORK_ENGINE;
 public class Inventory : NetworkComponent
 {
     public int tpCarried = 0;
+    public int maxCarried = 3;
 
     public override void HandleMessage(string flag, string value)
     {
