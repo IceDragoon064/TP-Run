@@ -14,6 +14,7 @@ ScriptsOnlyBuild:
     - ParticleSystemActivation
     - PlayerMovement
     - ScoreAndUI
+    - SpinTP
     - UI_Controller
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -115,6 +116,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12332}
     - Class: 114
       Script: {instanceID: 12360}
+    - Class: 114
+      Script: {instanceID: 12410}
     - Class: 114
       Script: {instanceID: 12626}
     - Class: 114
@@ -524,7 +527,7 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: afd568eb5e37621496b867b4311b10cb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpinTP

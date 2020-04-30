@@ -1,5 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2624772410476853088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3754438792786297504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64edcf8a9252af14182c6bcfd36c0468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDirty: 0
+  IsClient: 0
+  IsServer: 0
+  IsLocalPlayer: 0
+  Owner: 0
+  Type: 0
+  NetId: 0
+  MyCore: {fileID: 0}
+  MyId: {fileID: 0}
+  originalY: 0
+  floatationSpeed: 0
+  rotationSpeed: 0
 --- !u!1001 &5976881216362817601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,7 +34,7 @@ PrefabInstance:
     - target: {fileID: 7415273526459624161, guid: 675ee027266492740871dbd31f76df25,
         type: 3}
       propertyPath: m_Name
-      value: tp_roll_01
+      value: Toilet_Paper_of_Goodness
       objectReference: {fileID: 0}
     - target: {fileID: 7415273526459659969, guid: 675ee027266492740871dbd31f76df25,
         type: 3}
@@ -84,3 +108,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 675ee027266492740871dbd31f76df25, type: 3}
+--- !u!1 &3754438792786297504 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7415273526459624161, guid: 675ee027266492740871dbd31f76df25,
+    type: 3}
+  m_PrefabInstance: {fileID: 5976881216362817601}
+  m_PrefabAsset: {fileID: 0}
