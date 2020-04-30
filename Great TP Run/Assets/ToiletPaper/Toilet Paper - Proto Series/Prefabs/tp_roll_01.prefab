@@ -104,6 +104,9 @@ GameObject:
   - component: {fileID: 7415273526472647265}
   - component: {fileID: 8452189869651538030}
   - component: {fileID: 924743896403094551}
+  - component: {fileID: 7883286300182096339}
+  - component: {fileID: 7755696616895325790}
+  - component: {fileID: 8159350136835327596}
   m_Layer: 0
   m_Name: tp_roll_01
   m_TagString: TP
@@ -191,6 +194,72 @@ MonoBehaviour:
   UpdateFrequency: 0.1
   MyCore: {fileID: 0}
   GameObjectMessages: 
+--- !u!114 &7883286300182096339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415273526459624161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828a30058bce57c4aa9c18b5f93a5b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDirty: 0
+  IsClient: 0
+  IsServer: 0
+  IsLocalPlayer: 0
+  Owner: 0
+  Type: 0
+  NetId: 0
+  MyCore: {fileID: 0}
+  MyId: {fileID: 0}
+  myRig: {fileID: 8159350136835327596}
+  LastPosition: {x: 0, y: 0, z: 0}
+  LastRotation: {x: 0, y: 0, z: 0}
+  LastVelocity: {x: 0, y: 0, z: 0}
+  LastAngularVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &7755696616895325790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415273526459624161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64edcf8a9252af14182c6bcfd36c0468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDirty: 0
+  IsClient: 0
+  IsServer: 0
+  IsLocalPlayer: 0
+  Owner: 0
+  Type: 0
+  NetId: 0
+  MyCore: {fileID: 0}
+  MyId: {fileID: 0}
+  originalY: 0
+  floatationSpeed: 0
+  rotationSpeed: 0
+--- !u!54 &8159350136835327596
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415273526459624161}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7415273526459624163
 GameObject:
   m_ObjectHideFlags: 0

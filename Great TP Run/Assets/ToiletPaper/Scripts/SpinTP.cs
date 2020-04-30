@@ -27,11 +27,10 @@ public class SpinTP : NetworkComponent
             if(IsServer)
             {
                 //oscillation
-                transform.position = new Vector3(transform.position.x, (originalY + Mathf.Sin(floatationSpeed * 0.0001f) * 0.05f), transform.position.z);
+                transform.position = new Vector3(transform.position.x, (originalY + Mathf.Sin(floatationSpeed * 0.1f) * 0.2f), transform.position.z);
                 //rotation
-                transform.Rotate(0,rotationSpeed,0);
+                transform.Rotate(0,1,0);
                 floatationSpeed++;
-                rotationSpeed++;
             }
 
             yield return new WaitForSeconds(MyCore.MasterTimer);
