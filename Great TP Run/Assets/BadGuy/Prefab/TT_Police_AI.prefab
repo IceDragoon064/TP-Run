@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1288043837253784041}
   - component: {fileID: 1288043837253784430}
   - component: {fileID: 1288043837253784037}
-  - component: {fileID: 1288043837253784321}
   - component: {fileID: 1288043837253784044}
   - component: {fileID: 1288043837253784305}
+  - component: {fileID: 211007018121537965}
+  - component: {fileID: 6768942430202721459}
   m_Layer: 0
   m_Name: TT_Police_AI
   m_TagString: enemy
@@ -97,36 +98,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &1288043837253784321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1288043837253783659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 405f83f348c18d540ae875d4c2dd2c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDirty: 0
-  IsClient: 0
-  IsServer: 0
-  IsLocalPlayer: 0
-  Owner: 0
-  Type: 0
-  NetId: 0
-  MyCore: {fileID: 0}
-  MyId: {fileID: 0}
-  MyRig: {fileID: 0}
-  LastPosition: {x: 0, y: 0, z: 0}
-  LastVelocity: {x: 0, y: 0, z: 0}
-  LastRotation: {x: 0, y: 0, z: 0}
-  LastRotAcc: {x: 0, y: 0, z: 0}
-  SyncAngVel: 0
-  threshold: 0
-  VelocityCorrect: {x: 0, y: 0, z: 0}
-  LastValidVelocity: {x: 0, y: 0, z: 0}
 --- !u!65 &1288043837253784044
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -164,6 +135,63 @@ MonoBehaviour:
   healthSystem: {fileID: 0}
   infectedSystem: {fileID: 4389639877040374623}
   myChar: {fileID: 0}
+--- !u!114 &211007018121537965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288043837253783659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164765839613e9b48b55de64fad4b109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDirty: 0
+  IsClient: 0
+  IsServer: 0
+  IsLocalPlayer: 0
+  Owner: 0
+  Type: 0
+  NetId: 0
+  MyCore: {fileID: 0}
+  MyId: {fileID: 0}
+  health: 3
+  speedX: 0.1
+  speedZ: 0
+  manager: {fileID: 0}
+  directionTimer: 3
+  directionReset: 3
+  directionLongReset: 5
+  isInfected: 0
+  anim: {fileID: 0}
+  routeNumber: 0
+--- !u!114 &6768942430202721459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288043837253783659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828a30058bce57c4aa9c18b5f93a5b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDirty: 0
+  IsClient: 0
+  IsServer: 0
+  IsLocalPlayer: 0
+  Owner: 0
+  Type: 0
+  NetId: 0
+  MyCore: {fileID: 0}
+  MyId: {fileID: 0}
+  myRig: {fileID: 1288043837253784037}
+  LastPosition: {x: 0, y: 0, z: 0}
+  LastRotation: {x: 0, y: 0, z: 0}
+  LastVelocity: {x: 0, y: 0, z: 0}
+  LastAngularVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1288043837253783663
 GameObject:
   m_ObjectHideFlags: 0

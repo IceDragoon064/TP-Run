@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 677, y: 492}
   m_MaxSize: {x: 14001, y: 14042}
   vertical: 0
-  controlID: 91
+  controlID: 172
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -264,8 +264,8 @@ MonoBehaviour:
     y: 0
     width: 1152
     height: 573
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -338,21 +338,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/ToiletPaper/Toilet Paper - Proto Series/Prefabs
+    - Assets/BadGuy/Prefab
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/ToiletPaper/Toilet Paper - Proto Series/Prefabs
+  - Assets/BadGuy/Prefab
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\andre\Desktop\School\Game Design and Development\Unity
     Projects\TP-Run2\TP-Run\Great TP Run
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 119}
-    m_SelectedIDs: 5a4c0000
-    m_LastClickedID: 19546
-    m_ExpandedIDs: 00000000f04a0000f24a0000f44a0000f64a0000f84a0000fa4a0000fc4a0000fe4a0000004b0000024b0000044b0000064b0000084b0000524c000000ca9a3b
+    scrollPos: {x: 0, y: 67}
+    m_SelectedIDs: f24a0000
+    m_LastClickedID: 19186
+    m_ExpandedIDs: 00000000ca490000cc490000ce490000d0490000d2490000d4490000d6490000d8490000da490000dc490000de490000e0490000e2490000ee4a0000fe4a00000a4b0000224b00002a4b0000424b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -380,7 +380,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000f04a0000f24a0000f44a0000f64a0000f84a0000fa4a0000fc4a0000fe4a0000004b0000024b0000044b0000064b0000084b0000
+    m_ExpandedIDs: 00000000ca490000cc490000ce490000d0490000d2490000d4490000d6490000d8490000da490000dc490000de490000e0490000e2490000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -411,15 +411,15 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000ae4f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: SpinTP
-      m_OriginalName: SpinTP
+      m_Name: TT_MaleB_AI
+      m_OriginalName: TT_MaleB_AI
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 12410
+      m_UserData: 23058
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -473,7 +473,7 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 53
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -502,24 +502,24 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 5691ffff7291ffff2292ffffb8bcffffa6bdffffc2bdffff72beffff1cc3ffff38c3ffffe8c3ffff4acbffff66cbffff16ccfffff0d1ffff0cd2ffffbcd2ffffb4d8ffffd0d8ffff80d9ffffcce6ffffe8e6ffff84e7ffff0af4ffff80e20000f0e30000c21c0100321e01007a5801004e910100be92010066980100
+      scrollPos: {x: 0, y: 32}
+      m_SelectedIDs: 9aa40000
+      m_LastClickedID: 42138
+      m_ExpandedIDs: ec2bffff082cffffae2cffffaaf5ffffd03a00001c970000809c0000929c0000449d0000509d00007a9f000020a000007ea10000bea20000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Toilet_Paper_of_Goodness (21)
-        m_OriginalName: Toilet_Paper_of_Goodness (21)
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 28202
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 4}
       m_SearchString: 
@@ -565,9 +565,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -34.145798, y: 6.6820145, z: -73.50588}
+    m_Target: {x: -2.8324392, y: -161.6249, z: -196.346}
     speed: 2
-    m_Value: {x: -34.145798, y: 6.6820145, z: -73.50588}
+    m_Value: {x: -2.8324392, y: -161.6249, z: -196.346}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -613,13 +613,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.16806932, y: -0.7493088, z: 0.20942105, w: -0.60563534}
+    m_Target: {x: 0.0051690103, y: -0.8820972, z: 0.47140685, w: 0.0074425824}
     speed: 2
-    m_Value: {x: -0.1677246, y: -0.7500805, z: 0.20963494, w: -0.60440123}
+    m_Value: {x: 0.005156813, y: -0.88262594, z: 0.4699887, w: 0.007448824}
   m_Size:
-    m_Target: 97.02265
+    m_Target: 243.43204
     speed: 2
-    m_Value: 92.84464
+    m_Value: 243.43204
   m_Ortho:
     m_Target: 0
     speed: 2

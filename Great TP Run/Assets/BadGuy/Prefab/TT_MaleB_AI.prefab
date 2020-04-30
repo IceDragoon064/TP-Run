@@ -1024,15 +1024,11 @@ GameObject:
   - component: {fileID: 2433966671556688878}
   - component: {fileID: 2433966671556688743}
   - component: {fileID: 2433966671556687992}
-  - component: {fileID: 2433966671556687969}
   - component: {fileID: 2433966671556688316}
-  - component: {fileID: 2433966671556687979}
-  - component: {fileID: 2433966671556688287}
-  - component: {fileID: 2433966671556688349}
-  - component: {fileID: 2433966671556688347}
-  - component: {fileID: 2433966671556687977}
   - component: {fileID: 2433966671556688748}
   - component: {fileID: 2433966671556688738}
+  - component: {fileID: 7824266435704381505}
+  - component: {fileID: 789598591687737164}
   m_Layer: 0
   m_Name: TT_MaleB_AI
   m_TagString: enemy
@@ -1099,36 +1095,6 @@ MonoBehaviour:
   UpdateFrequency: 0.1
   MyCore: {fileID: 0}
   GameObjectMessages: 
---- !u!114 &2433966671556687969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2433966671556688636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 405f83f348c18d540ae875d4c2dd2c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDirty: 0
-  IsClient: 0
-  IsServer: 0
-  IsLocalPlayer: 0
-  Owner: 0
-  Type: 0
-  NetId: 0
-  MyCore: {fileID: 0}
-  MyId: {fileID: 0}
-  MyRig: {fileID: 0}
-  LastPosition: {x: 0, y: 0, z: 0}
-  LastVelocity: {x: 0, y: 0, z: 0}
-  LastRotation: {x: 0, y: 0, z: 0}
-  LastRotAcc: {x: 0, y: 0, z: 0}
-  SyncAngVel: 0
-  threshold: 0
-  VelocityCorrect: {x: 0, y: 0, z: 0}
-  LastValidVelocity: {x: 0, y: 0, z: 0}
 --- !u!114 &2433966671556688316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1136,7 +1102,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2433966671556688636}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 828a30058bce57c4aa9c18b5f93a5b81, type: 3}
   m_Name: 
@@ -1155,171 +1121,6 @@ MonoBehaviour:
   LastRotation: {x: 0, y: 0, z: 0}
   LastVelocity: {x: 0, y: 0, z: 0}
   LastAngularVelocity: {x: 0, y: 0, z: 0}
---- !u!114 &2433966671556687979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2433966671556688636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f53eb7ecd875994589d163199642dc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDirty: 0
-  IsClient: 0
-  IsServer: 0
-  IsLocalPlayer: 0
-  Owner: 0
-  Type: 0
-  NetId: 0
-  MyCore: {fileID: 0}
-  MyId: {fileID: 0}
-  Pname: 
-  score: 0
-  color: 0
-  maxHealth: 100
-  health: 100
-  healingRate: 10
-  infectedDamageRate: 10
-  MyTextbox: {fileID: 0}
-  manager: {fileID: 0}
-  myRig: {fileID: 0}
-  cam: {fileID: 0}
-  ready: 0
-  end: 0
-  CanShoot: 1
-  shootcooldown: 0.5
-  shoottimer: 0
-  healingCD: 1
-  healingReset: 1
-  infectedCD: 0.6
-  infectedReset: 2
-  speedTime: Infinity
-  turnRate: 3.5
-  velRate: 4
-  spedUp: 0
-  isInfected: 0
-  healing: 0
-  dead: 0
-  lerpVal: 0.25
-  lerpMag: 0.5
-  SpawnPoint: {fileID: 0}
-  HomePoint: {fileID: 0}
-  AttackBox: {fileID: 0}
-  Overlay: {fileID: 2433966671556688347}
-  inventory: {fileID: 2433966671556688287}
---- !u!114 &2433966671556688287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2433966671556688636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 189da13d3a0e6234993e2a89d4b03124, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDirty: 0
-  IsClient: 0
-  IsServer: 0
-  IsLocalPlayer: 0
-  Owner: 0
-  Type: 0
-  NetId: 0
-  MyCore: {fileID: 0}
-  MyId: {fileID: 0}
-  tpCarried: 0
-  maxCarried: 3
---- !u!114 &2433966671556688349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2433966671556688636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4725640e20878104f975d4a42bacc913, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDirty: 0
-  IsClient: 0
-  IsServer: 0
-  IsLocalPlayer: 0
-  Owner: 0
-  Type: 0
-  NetId: 0
-  MyCore: {fileID: 0}
-  MyId: {fileID: 0}
-  myRig: {fileID: 0}
-  myChar: {fileID: 0}
-  anim: {fileID: 0}
-  moving: 0
-  movingBack: 0
-  turning: 0
-  running: 0
-  dead: 0
---- !u!114 &2433966671556688347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2433966671556688636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d77f9bdbce388a4ab9e0702deb0b8d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDirty: 0
-  IsClient: 0
-  IsServer: 0
-  IsLocalPlayer: 0
-  Owner: 0
-  Type: 0
-  NetId: 0
-  MyCore: {fileID: 0}
-  MyId: {fileID: 0}
-  Pname: 
-  apText: {fileID: 0}
-  localScoreText: {fileID: 0}
-  playerScoreText: {fileID: 0}
-  pnameText: {fileID: 0}
-  tpRemainingText: {fileID: 0}
-  tpCarried: {fileID: 0}
-  InfectedPanel: {fileID: 0}
-  hpBar: {fileID: 0}
-  apCanvas: {fileID: 0}
-  players: []
-  myChar: {fileID: 2433966671556687979}
-  manager: {fileID: 0}
---- !u!114 &2433966671556687977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2433966671556688636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e9c7c6a09144344b80a72b5c4b068d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDirty: 0
-  IsClient: 0
-  IsServer: 0
-  IsLocalPlayer: 0
-  Owner: 0
-  Type: 0
-  NetId: 0
-  MyCore: {fileID: 0}
-  MyId: {fileID: 0}
-  healthSystem: {fileID: 0}
-  infectedSystem: {fileID: 1581178386183126486}
-  myChar: {fileID: 2433966671556687979}
 --- !u!54 &2433966671556688748
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1349,6 +1150,61 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.61605597, y: 1.4938512, z: 0.57299304}
   m_Center: {x: -0.015862823, y: 0.80336475, z: 0.0084319115}
+--- !u!114 &7824266435704381505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2433966671556688636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164765839613e9b48b55de64fad4b109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDirty: 0
+  IsClient: 0
+  IsServer: 0
+  IsLocalPlayer: 0
+  Owner: 0
+  Type: 0
+  NetId: 0
+  MyCore: {fileID: 0}
+  MyId: {fileID: 0}
+  health: 3
+  speedX: 0.1
+  speedZ: 0
+  manager: {fileID: 0}
+  directionTimer: 3
+  directionReset: 3
+  directionLongReset: 5
+  isInfected: 0
+  anim: {fileID: 0}
+  routeNumber: 0
+--- !u!114 &789598591687737164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2433966671556688636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e9c7c6a09144344b80a72b5c4b068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDirty: 0
+  IsClient: 0
+  IsServer: 0
+  IsLocalPlayer: 0
+  Owner: 0
+  Type: 0
+  NetId: 0
+  MyCore: {fileID: 0}
+  MyId: {fileID: 0}
+  healthSystem: {fileID: 0}
+  infectedSystem: {fileID: 1581178386183126486}
+  myChar: {fileID: 0}
 --- !u!1001 &6144489192379430462
 PrefabInstance:
   m_ObjectHideFlags: 0
